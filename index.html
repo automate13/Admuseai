@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#F7F3EC" />
+    <title>AdmuseAi — AI UGC & Product Ads</title>
+    <meta
+      name="description"
+      content="AdmuseAi creates refined AI UGC and product ads for brands that want soft luxury aesthetics — elegant, cinematic, conversion-ready."
+    />
+    <meta property="og:title" content="AdmuseAi — AI UGC & Product Ads" />
+    <meta
+      property="og:description"
+      content="Refined AI UGC and product ads with soft luxury finish."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" id="top">
+      <div class="shell header-inner">
+        <a class="logo" href="#home" aria-label="AdmuseAi home">
+          <span class="logo-mark" aria-hidden="true"></span>
+          <span class="logo-text" data-bind="brand">AdmuseAi</span>
+        </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Open menu"
+        >
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary">
+          <ul class="nav-list" data-bind="nav"></ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero section" id="home" aria-labelledby="hero-title">
+        <div class="shell hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow" data-bind="hero.eyebrow"></p>
+            <h1 id="hero-title" data-bind="hero.headline"></h1>
+            <p class="lede" data-bind="hero.subhead"></p>
+            <div class="hero-actions" data-bind="hero.actions"></div>
+          </div>
+          <aside class="hero-panel" aria-hidden="true">
+            <div class="hero-frame">
+              <div class="hero-orb"></div>
+              <p class="hero-panel-label">Soft luxury · cream &amp; ruby</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="work section" id="work" aria-labelledby="work-title">
+        <div class="shell">
+          <header class="section-header">
+            <p class="eyebrow" data-bind="work.eyebrow"></p>
+            <h2 id="work-title" data-bind="work.title"></h2>
+            <p class="section-intro" data-bind="work.intro"></p>
+          </header>
+          <div class="project-grid" data-bind="projects" role="list"></div>
+        </div>
+      </section>
+
+      <section class="contact section" id="contact" aria-labelledby="contact-title">
+        <div class="shell contact-panel">
+          <header class="section-header">
+            <p class="eyebrow" data-bind="contact.eyebrow"></p>
+            <h2 id="contact-title" data-bind="contact.title"></h2>
+            <p class="section-intro" data-bind="contact.intro"></p>
+          </header>
+          <ul class="contact-list" data-bind="contact.links"></ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <p class="footer-note" data-bind="footer.note"></p>
+        <a class="footer-top" href="#top">Back to top</a>
+      </div>
+    </footer>
+
+    <script src="content.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
