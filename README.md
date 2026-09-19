@@ -55,7 +55,7 @@ Sticky header + mobile hamburger. `content.js` drives all copy.
 ### Contact (already set)
 
 - Instagram: [@admusebyruby](https://instagram.com/admusebyruby)
-- Email: [contact@admuseai.com](mailto:contact@admuseai.com)
+- Email: [auto.mate0313@gmail.com](mailto:auto.mate0313@gmail.com)
 
 ### Pricing (important)
 

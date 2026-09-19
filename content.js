@@ -32,7 +32,7 @@ window.ADMUSE_CONTENT = {
 
   navCta: {
     label: "Start a Project →",
-    href: "mailto:contact@admuseai.com"
+    href: "mailto:auto.mate0313@gmail.com"
   },
 
   hero: {
@@ -42,7 +42,7 @@ window.ADMUSE_CONTENT = {
       "Create scroll-stopping UGC videos, product ads, and social creatives without expensive photoshoots or traditional production.",
     ctaPrimary: {
       label: "Start a Project →",
-      href: "mailto:contact@admuseai.com"
+      href: "mailto:auto.mate0313@gmail.com"
     },
     ctaSecondary: { label: "View Our Work →", href: "#work" },
     frameLabel: "UGC · 9:16",
@@ -261,7 +261,7 @@ window.ADMUSE_CONTENT = {
     ],
     cta: {
       label: "Start a Project →",
-      href: "mailto:contact@admuseai.com"
+      href: "mailto:auto.mate0313@gmail.com"
     }
   },
 
@@ -314,7 +314,7 @@ window.ADMUSE_CONTENT = {
           "One revision round",
           "Platform-ready exports"
         ],
-        cta: { label: "Inquire →", href: "mailto:contact@admuseai.com?subject=Starter%20package" }
+        cta: { label: "Inquire →", href: "mailto:auto.mate0313@gmail.com?subject=Starter%20package" }
       },
       {
         id: "growth",
@@ -328,7 +328,7 @@ window.ADMUSE_CONTENT = {
           "Multiple revision rounds",
           "Priority turnaround"
         ],
-        cta: { label: "Inquire →", href: "mailto:contact@admuseai.com?subject=Growth%20package" }
+        cta: { label: "Inquire →", href: "mailto:auto.mate0313@gmail.com?subject=Growth%20package" }
       },
       {
         id: "custom",
@@ -341,7 +341,7 @@ window.ADMUSE_CONTENT = {
           "Ongoing creative support",
           "Direct creative partnership"
         ],
-        cta: { label: "Talk to us →", href: "mailto:contact@admuseai.com?subject=Custom%20project" }
+        cta: { label: "Talk to us →", href: "mailto:auto.mate0313@gmail.com?subject=Custom%20project" }
       }
     ]
   },
@@ -391,7 +391,7 @@ window.ADMUSE_CONTENT = {
       "Tell us what you’re launching. We’ll reply with a clear next step — no pressure pitch deck.",
     ctaPrimary: {
       label: "Start a Project →",
-      href: "mailto:contact@admuseai.com"
+      href: "mailto:auto.mate0313@gmail.com"
     },
     ctaSecondary: {
       label: "Instagram @admusebyruby",
@@ -401,8 +401,8 @@ window.ADMUSE_CONTENT = {
 
   contact: {
     email: {
-      address: "contact@admuseai.com",
-      mailto: "mailto:contact@admuseai.com"
+      address: "auto.mate0313@gmail.com",
+      mailto: "mailto:auto.mate0313@gmail.com"
     },
     instagram: {
       handle: "@admusebyruby",
