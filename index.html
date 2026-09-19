@@ -3,34 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#F7F3EC" />
+    <meta name="theme-color" content="#050a0f" />
+    <meta name="color-scheme" content="dark" />
     <title>AdmuseAi — AI UGC & Product Ads</title>
     <meta
       name="description"
-      content="AdmuseAi creates refined AI UGC and product ads for brands that want soft luxury aesthetics — elegant, cinematic, conversion-ready."
+      content="AdmuseAi creates refined AI UGC and product ads for brands — cinematic, conversion-ready creatives."
     />
     <meta property="og:title" content="AdmuseAi — AI UGC & Product Ads" />
     <meta
       property="og:description"
-      content="Refined AI UGC and product ads with soft luxury finish."
+      content="AI UGC and product ads — cinematic, conversion-ready."
     />
     <meta property="og:type" content="website" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+    <div class="bg-glow" aria-hidden="true"></div>
 
     <header class="site-header" id="top">
       <div class="shell header-inner">
         <a class="logo" href="#home" aria-label="AdmuseAi home">
-          <span class="logo-mark" aria-hidden="true"></span>
-          <span class="logo-text" data-bind="brand">AdmuseAi</span>
+          <span class="logo-text" data-bind="brand">AdmuseAi</span><span class="logo-dot" aria-hidden="true">.</span>
         </a>
         <button
           class="nav-toggle"
@@ -50,24 +51,41 @@
 
     <main id="main">
       <section class="hero section" id="home" aria-labelledby="hero-title">
-        <div class="shell hero-grid">
-          <div class="hero-copy">
-            <p class="eyebrow" data-bind="hero.eyebrow"></p>
-            <h1 id="hero-title" data-bind="hero.headline"></h1>
-            <p class="lede" data-bind="hero.subhead"></p>
-            <div class="hero-actions" data-bind="hero.actions"></div>
+        <div class="shell hero-inner">
+          <p class="status-badge" data-bind="hero.badge"></p>
+          <p class="eyebrow" data-bind="hero.eyebrow"></p>
+          <h1 id="hero-title" class="hero-title">
+            <span class="hero-line" data-bind="hero.headline"></span>
+            <span class="hero-line hero-line-accent" data-bind="hero.headlineAccent"></span>
+          </h1>
+          <p class="lede" data-bind="hero.subhead"></p>
+          <div class="hero-actions" data-bind="hero.actions"></div>
+        </div>
+      </section>
+
+      <section class="about section" id="about" aria-labelledby="about-title">
+        <div class="shell section-inner">
+          <p class="eyebrow" data-bind="about.eyebrow"></p>
+          <h2 id="about-title" data-bind="about.title"></h2>
+          <div class="glass-card about-card">
+            <p class="section-intro" data-bind="about.body"></p>
           </div>
-          <aside class="hero-panel" aria-hidden="true">
-            <div class="hero-frame">
-              <div class="hero-orb"></div>
-              <p class="hero-panel-label">Soft luxury · cream &amp; ruby</p>
-            </div>
-          </aside>
+        </div>
+      </section>
+
+      <section class="services section" id="services" aria-labelledby="services-title">
+        <div class="shell section-inner">
+          <header class="section-header">
+            <p class="eyebrow" data-bind="services.eyebrow"></p>
+            <h2 id="services-title" data-bind="services.title"></h2>
+            <p class="section-intro" data-bind="services.intro"></p>
+          </header>
+          <ul class="tag-cloud" data-bind="services.tags" role="list"></ul>
         </div>
       </section>
 
       <section class="work section" id="work" aria-labelledby="work-title">
-        <div class="shell">
+        <div class="shell section-inner section-inner-wide">
           <header class="section-header">
             <p class="eyebrow" data-bind="work.eyebrow"></p>
             <h2 id="work-title" data-bind="work.title"></h2>
@@ -78,12 +96,10 @@
       </section>
 
       <section class="contact section" id="contact" aria-labelledby="contact-title">
-        <div class="shell contact-panel">
-          <header class="section-header">
-            <p class="eyebrow" data-bind="contact.eyebrow"></p>
-            <h2 id="contact-title" data-bind="contact.title"></h2>
-            <p class="section-intro" data-bind="contact.intro"></p>
-          </header>
+        <div class="shell section-inner contact-wrap">
+          <p class="eyebrow" data-bind="contact.eyebrow"></p>
+          <h2 id="contact-title" data-bind="contact.title"></h2>
+          <p class="section-intro contact-intro" data-bind="contact.intro"></p>
           <ul class="contact-list" data-bind="contact.links"></ul>
         </div>
       </section>

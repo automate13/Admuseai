@@ -45,8 +45,10 @@
   function renderHero() {
     var hero = content.hero || {};
     text(document.querySelector('[data-bind="brand"]'), content.brand);
+    text(document.querySelector('[data-bind="hero.badge"]'), hero.badge);
     text(document.querySelector('[data-bind="hero.eyebrow"]'), hero.eyebrow);
     text(document.querySelector('[data-bind="hero.headline"]'), hero.headline);
+    text(document.querySelector('[data-bind="hero.headlineAccent"]'), hero.headlineAccent);
     text(document.querySelector('[data-bind="hero.subhead"]'), hero.subhead);
 
     var actions = document.querySelector('[data-bind="hero.actions"]');
@@ -64,6 +66,80 @@
 
     addBtn(hero.ctaPrimary, true);
     addBtn(hero.ctaSecondary, false);
+  }
+
+  function renderAbout() {
+    var about = content.about || {};
+    text(document.querySelector('[data-bind="about.eyebrow"]'), about.eyebrow);
+    text(document.querySelector('[data-bind="about.title"]'), about.title);
+    text(document.querySelector('[data-bind="about.body"]'), about.body);
+  }
+
+  function renderServices() {
+    var services = content.services || {};
+    text(document.querySelector('[data-bind="services.eyebrow"]'), services.eyebrow);
+    text(document.querySelector('[data-bind="services.title"]'), services.title);
+    text(document.querySelector('[data-bind="services.intro"]'), services.intro);
+
+    var cloud = document.querySelector('[data-bind="services.tags"]');
+    if (!cloud || !services.tags) return;
+    cloud.innerHTML = "";
+    services.tags.forEach(function (tag) {
+      var li = document.createElement("li");
+      li.className = "tag-pill";
+      li.setAttribute("role", "listitem");
+      li.textContent = tag;
+      cloud.appendChild(li);
+    });
+  }
+
+  function buildPlaceholder(project) {
+    var inner = document.createElement("div");
+    inner.className = "project-media-inner";
+
+    var dot = document.createElement("div");
+    dot.className = "project-media-dot";
+    dot.setAttribute("aria-hidden", "true");
+
+    var label = document.createElement("p");
+    label.className = "project-media-label";
+    label.textContent = project.mediaLabel || "Add your MP4 in /videos";
+
+    var hint = document.createElement("p");
+    hint.className = "project-media-hint";
+    hint.textContent = "Set video in content.js";
+
+    inner.appendChild(dot);
+    inner.appendChild(label);
+    inner.appendChild(hint);
+    return inner;
+  }
+
+  function buildVideo(project) {
+    var video = document.createElement("video");
+    video.controls = true;
+    video.setAttribute("playsinline", "");
+    video.setAttribute("preload", "metadata");
+    video.className = "project-video";
+    if (project.poster) {
+      video.setAttribute("poster", project.poster);
+    }
+    video.setAttribute(
+      "aria-label",
+      (project.title || "Project") + " video"
+    );
+
+    var source = document.createElement("source");
+    source.src = project.video;
+    source.type = "video/mp4";
+    video.appendChild(source);
+
+    var fallback = document.createElement("p");
+    fallback.className = "project-media-label";
+    fallback.textContent = "Your browser does not support HTML5 video.";
+    video.appendChild(fallback);
+
+    return video;
   }
 
   function renderWork() {
@@ -84,25 +160,13 @@
       var media = document.createElement("div");
       media.className = "project-media";
       media.style.aspectRatio = project.aspect || "4 / 5";
-      media.setAttribute(
-        "aria-label",
-        (project.title || "Project") + " media placeholder"
-      );
 
-      var inner = document.createElement("div");
-      inner.className = "project-media-inner";
-
-      var dot = document.createElement("div");
-      dot.className = "project-media-dot";
-      dot.setAttribute("aria-hidden", "true");
-
-      var label = document.createElement("p");
-      label.className = "project-media-label";
-      label.textContent = project.mediaLabel || "Media placeholder";
-
-      inner.appendChild(dot);
-      inner.appendChild(label);
-      media.appendChild(inner);
+      if (project.video) {
+        media.classList.add("has-video");
+        media.appendChild(buildVideo(project));
+      } else {
+        media.appendChild(buildPlaceholder(project));
+      }
 
       var body = document.createElement("div");
       body.className = "project-body";
@@ -115,6 +179,27 @@
 
       body.appendChild(h3);
       body.appendChild(p);
+
+      if (project.tags && project.tags.length) {
+        var tags = document.createElement("ul");
+        tags.className = "project-tags";
+        project.tags.forEach(function (t) {
+          var li = document.createElement("li");
+          li.textContent = t;
+          tags.appendChild(li);
+        });
+        body.appendChild(tags);
+      }
+
+      if (project.externalUrl) {
+        var ext = document.createElement("a");
+        ext.className = "project-external";
+        ext.href = project.externalUrl;
+        ext.target = "_blank";
+        ext.rel = "noopener noreferrer";
+        ext.textContent = "Watch externally →";
+        body.appendChild(ext);
+      }
 
       card.appendChild(media);
       card.appendChild(body);
@@ -207,7 +292,7 @@
     var links = Array.prototype.slice.call(
       document.querySelectorAll(".nav-list a")
     );
-    var sections = ["home", "work", "contact"]
+    var sections = ["home", "services", "work", "contact"]
       .map(function (id) {
         return document.getElementById(id);
       })
@@ -240,6 +325,8 @@
   setSeo();
   renderNav();
   renderHero();
+  renderAbout();
+  renderServices();
   renderWork();
   renderContact();
   renderFooter();
