@@ -640,6 +640,73 @@
     }
   }
 
+  function setupSmoothHashScroll() {
+    var header = document.querySelector(".site-header");
+
+    function getTarget(hash) {
+      if (!hash || hash === "#") return null;
+      var id;
+      try {
+        id = decodeURIComponent(hash.slice(1));
+      } catch (err) {
+        return null;
+      }
+      return id ? document.getElementById(id) : null;
+    }
+
+    function scrollToTarget(hash, behavior) {
+      var target = getTarget(hash);
+      if (!target) return false;
+
+      var headerHeight = header ? header.getBoundingClientRect().height : 0;
+      var top = Math.max(
+        0,
+        target.getBoundingClientRect().top + (window.scrollY || window.pageYOffset || 0) - headerHeight - 16
+      );
+      window.scrollTo({
+        top: top,
+        behavior: prefersReducedMotion() ? "auto" : behavior
+      });
+      return true;
+    }
+
+    document.addEventListener("click", function (e) {
+      if (
+        e.defaultPrevented ||
+        e.button !== 0 ||
+        e.metaKey ||
+        e.ctrlKey ||
+        e.shiftKey ||
+        e.altKey
+      ) {
+        return;
+      }
+
+      var link = e.target.closest("a[href]");
+      if (!link || link.hasAttribute("download") || link.target === "_blank") return;
+
+      var href = link.getAttribute("href");
+      if (!href || href.charAt(0) !== "#") return;
+      if (!scrollToTarget(href, "smooth")) return;
+
+      e.preventDefault();
+      if (window.history && window.history.pushState) {
+        window.history.pushState(null, "", href);
+      }
+    });
+
+    function alignHash() {
+      if (!window.location.hash) return;
+      window.requestAnimationFrame(function () {
+        scrollToTarget(window.location.hash, "auto");
+      });
+    }
+
+    window.addEventListener("hashchange", alignHash);
+    window.addEventListener("popstate", alignHash);
+    alignHash();
+  }
+
   function setupActiveNav() {
     var links = Array.prototype.slice.call(
       document.querySelectorAll(".nav-list a")
@@ -1030,6 +1097,7 @@
   renderFinalCta();
   renderFooter();
   setupNavToggle();
+  setupSmoothHashScroll();
   setupActiveNav();
   setupParallax();
   setupHeroParticles();
