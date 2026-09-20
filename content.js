@@ -136,7 +136,7 @@ window.ADMUSE_CONTENT = {
         "Menu items that bloom into frame with warm light and appetite-forward pacing.",
       aspect: "1 / 1",
       mediaLabel: "Sample coming soon",
-      video: "videos/video-two.mp4",
+      video: "videos/video-two.mp4.mp4",
       poster: null,
       externalUrl: null,
       tags: ["Food", "Square"]
