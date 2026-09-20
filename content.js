@@ -7,7 +7,6 @@
  *   poster:      "videos/poster.jpg"      → poster frame for video
  *   externalUrl: "https://..."            → link out (Drive / unlisted host)
  *   Leave video: null for a client-facing “Sample coming soon” placeholder.
- 
  *
  * Hero is typography + atmospheric particles/haze (no phone mockup).
  * Unused-but-kept API fields (safe to leave or delete later):
@@ -124,7 +123,7 @@ window.ADMUSE_CONTENT = {
         "Dynamic product toss against a soft urban billboard — kinetic, branded, scroll-stopping.",
       aspect: "9 / 16",
       mediaLabel: "Sample coming soon",
-     video: "videos/Girl drink Fianl.mp4",
+      video: "videos/Girl drink Fianl.mp4",
       poster: null,
       externalUrl: null,
       tags: ["Vertical", "Product"]
@@ -141,30 +140,7 @@ window.ADMUSE_CONTENT = {
       externalUrl: null,
       tags: ["Food", "Square"]
     },
-    {
-      id: "one-cherry-rule",
-      title: "Beauty hero concept",
-      description:
-        "Soft-focus beauty hero with intimate framing — glossy, editorial UGC energy.",
-      aspect: "4 / 5",
-      mediaLabel: "Sample coming soon",
-      video: null,
-      poster: null,
-      externalUrl: null,
-      tags: ["Beauty", "UGC"]
-    },
-    {
-      id: "soft-luxury-hero",
-      title: "Soft luxury product hero",
-      description:
-        "Quiet-confidence product hero for ecom — generous space, refined light.",
-      aspect: "16 / 9",
-      mediaLabel: "Sample coming soon",
-      video: null,
-      poster: null,
-      externalUrl: null,
-      tags: ["Ecom", "Wide"]
-    }
+
   ],
 
   process: {
