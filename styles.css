@@ -31,6 +31,22 @@
     0 1px 0 rgba(255, 255, 255, 0.04) inset,
     0 12px 36px rgba(0, 0, 0, 0.35),
     0 32px 64px rgba(0, 0, 0, 0.28);
+  --pop-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --pop-duration: 0.24s;
+  --pop-shadow-btn:
+    0 12px 24px rgba(0, 0, 0, 0.32),
+    0 20px 40px rgba(100, 255, 218, 0.16);
+  --pop-shadow-btn-primary:
+    0 12px 24px rgba(0, 0, 0, 0.28),
+    0 20px 42px rgba(100, 255, 218, 0.28);
+  --pop-shadow-btn-press:
+    0 8px 20px rgba(0, 0, 0, 0.3),
+    0 14px 30px rgba(100, 255, 218, 0.18);
+  --pop-shadow-card:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 12px 32px rgba(0, 0, 0, 0.42),
+    0 28px 56px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(100, 255, 218, 0.08);
   color-scheme: dark;
 }
 
@@ -191,10 +207,12 @@ a:hover {
   font-size: 1rem;
   letter-spacing: 0.12em;
   flex-shrink: 0;
+  transition: opacity 0.2s ease;
 }
 
 .logo:hover {
   color: #fff;
+  opacity: 0.92;
 }
 
 .logo-text {
@@ -259,7 +277,9 @@ a:hover {
   font-weight: 500;
   letter-spacing: 0.02em;
   color: var(--muted);
-  transition: color 0.2s ease;
+  transform: translateZ(0);
+  transition: color var(--pop-duration) ease,
+    transform var(--pop-duration) var(--pop-ease);
 }
 
 .nav-list a:hover,
@@ -343,14 +363,21 @@ h3 {
   margin-top: 2.5rem;
 }
 
-/* ── Buttons ── */
-/* Keep the lift on the button itself so press/hover never moves its layout. */
+/* ── Interactive pop language (CTA 3D pop, site-wide) ── */
+/* Lift lives on the element itself so press/hover never shifts layout. */
 .hero-actions,
 .hero-cta,
 .btn-row,
 .section-cta,
 .nav-cta,
-.pricing-card {
+.service-grid,
+.project-grid,
+.pricing-grid,
+.directions-grid,
+.platform-grid,
+.audience-tags,
+.faq-list,
+.compare-grid {
   perspective: 900px;
 }
 
@@ -370,8 +397,8 @@ h3 {
   transform: translateZ(0);
   transform-style: preserve-3d;
   will-change: transform;
-  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.24s ease, border-color 0.2s ease, color 0.2s ease,
+  transition: transform var(--pop-duration) var(--pop-ease),
+    box-shadow var(--pop-duration) ease, border-color 0.2s ease, color 0.2s ease,
     background 0.2s ease, opacity 0.2s ease;
 }
 
@@ -388,23 +415,41 @@ h3 {
   font-weight: 500;
 }
 
-/* Hover is intentionally gated so touch devices do not retain a hover lift. */
+/* Shared surfaces that speak the same pop dialect as .btn */
+.service-card,
+.project-card,
+.pricing-card,
+.direction-card,
+.platform-card,
+.compare-card,
+.faq-item,
+.audience-tag {
+  transform: translateZ(0);
+  transform-style: preserve-3d;
+  transition: transform var(--pop-duration) var(--pop-ease),
+    box-shadow var(--pop-duration) ease, border-color 0.25s ease,
+    color 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+}
+
+/* Hover gated: touch devices must not retain a sticky lift. */
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .btn:hover,
+  .btn:focus-visible,
   .btn-primary:hover,
   .btn-ghost:hover,
   .btn-primary:focus-visible,
-  .btn-ghost:focus-visible {
+  .btn-ghost:focus-visible,
+  .btn-nav:hover,
+  .btn-nav:focus-visible {
     transform: perspective(700px) translate3d(0, -4px, 10px) rotateX(1.5deg)
       scale(1.025);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.32),
-      0 20px 40px rgba(100, 255, 218, 0.16);
+    box-shadow: var(--pop-shadow-btn);
   }
 
   .btn-primary:hover,
   .btn-primary:focus-visible {
     color: #04120e;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.28),
-      0 20px 42px rgba(100, 255, 218, 0.28);
+    box-shadow: var(--pop-shadow-btn-primary);
   }
 
   .btn-ghost:hover,
@@ -412,14 +457,90 @@ h3 {
     border-color: var(--accent);
     color: var(--accent);
   }
+
+  .nav-list a:hover {
+    transform: translate3d(0, -2px, 0);
+  }
+
+  .service-card:hover,
+  .service-card.is-inview:hover,
+  .project-card:hover,
+  .project-card.is-inview:hover,
+  .pricing-card:hover,
+  .direction-card:hover,
+  .platform-card:hover,
+  .compare-card:hover,
+  .faq-item:hover {
+    animation: none;
+    border-color: var(--accent-ring);
+    box-shadow: var(--pop-shadow-card);
+    transform: perspective(900px) translate3d(0, -6px, 12px) rotateX(2deg)
+      scale(1.015);
+  }
+
+  .service-card:nth-child(even):hover,
+  .service-card.is-inview:nth-child(even):hover,
+  .project-card:nth-child(odd):hover,
+  .project-card.is-inview:nth-child(odd):hover,
+  .pricing-card:nth-child(even):hover,
+  .direction-card:nth-child(even):hover,
+  .platform-card:nth-child(even):hover {
+    animation: none;
+    transform: perspective(900px) translate3d(0, -6px, 12px) rotateX(2deg)
+      rotateY(1.2deg) scale(1.015);
+  }
+
+  .audience-tag:hover {
+    border-color: var(--accent-ring);
+    color: var(--accent);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28),
+      0 0 24px rgba(100, 255, 218, 0.08);
+    transform: perspective(700px) translate3d(0, -3px, 8px) rotateX(1.25deg)
+      scale(1.04);
+  }
+
+  .footer-links a:hover,
+  .footer-contact a:hover {
+    transform: translate3d(0, -2px, 0);
+  }
 }
 
-/* A real press state gives touch users the same tactile pop without sticky hover. */
+/* Press/active: same tactile pop for touch + mouse without sticky hover. */
 @media (prefers-reduced-motion: no-preference) {
-  .btn:active {
+  .btn:active,
+  .btn-primary:active,
+  .btn-ghost:active,
+  .btn-nav:active {
     transform: perspective(700px) translate3d(0, -2px, 6px) scale(1.01);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3),
-      0 14px 30px rgba(100, 255, 218, 0.18);
+    box-shadow: var(--pop-shadow-btn-press);
+  }
+
+  .service-card:active,
+  .service-card.is-inview:active,
+  .project-card:active,
+  .project-card.is-inview:active,
+  .pricing-card:active,
+  .direction-card:active,
+  .platform-card:active,
+  .compare-card:active,
+  .faq-item:active {
+    animation: none;
+    border-color: var(--accent-ring);
+    box-shadow: var(--pop-shadow-card);
+    transform: perspective(900px) translate3d(0, -3px, 8px) rotateX(1.25deg)
+      scale(1.01);
+  }
+
+  .audience-tag:active {
+    border-color: var(--accent-ring);
+    color: var(--accent);
+    transform: perspective(700px) translate3d(0, -2px, 6px) scale(1.02);
+  }
+
+  .nav-list a:active,
+  .footer-links a:active,
+  .footer-contact a:active {
+    transform: translate3d(0, -1px, 0);
   }
 }
 
@@ -616,7 +737,6 @@ h3 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
-  perspective: 1100px;
 }
 
 .service-card {
@@ -625,13 +745,6 @@ h3 {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-card);
-  transition: border-color 0.25s ease, box-shadow 0.35s ease, transform 0.35s ease;
-  transform-style: preserve-3d;
-}
-
-.service-card:hover {
-  border-color: var(--accent-ring);
-  box-shadow: var(--shadow-card-hover);
 }
 
 .service-icon-wrap {
@@ -666,7 +779,6 @@ h3 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
-  perspective: 1100px;
 }
 
 .project-card {
@@ -678,13 +790,6 @@ h3 {
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-card);
-  transition: border-color 0.25s ease, box-shadow 0.35s ease, transform 0.35s ease;
-  transform-style: preserve-3d;
-}
-
-.project-card:hover {
-  border-color: var(--accent-ring);
-  box-shadow: var(--shadow-card-hover);
 }
 
 .project-media {
@@ -902,12 +1007,6 @@ h3 {
   border-radius: var(--radius);
   background: var(--bg-card);
   box-shadow: var(--shadow-card);
-  transition: border-color 0.2s ease, box-shadow 0.3s ease;
-}
-
-.direction-card:hover {
-  border-color: var(--accent-ring);
-  box-shadow: var(--shadow-card-hover);
 }
 
 .direction-card h3 {
@@ -940,12 +1039,6 @@ h3 {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 999px;
-  transition: border-color 0.2s ease, color 0.2s ease;
-}
-
-.audience-tag:hover {
-  border-color: var(--accent-ring);
-  color: var(--accent);
 }
 
 /* ── Platforms ── */
@@ -1190,9 +1283,13 @@ h3 {
 }
 
 .footer-links a {
+  display: inline-block;
   font-size: 0.8125rem;
   color: var(--muted);
   text-decoration: none;
+  transform: translateZ(0);
+  transition: color var(--pop-duration) ease,
+    transform var(--pop-duration) var(--pop-ease);
 }
 
 .footer-links a:hover {
@@ -1207,9 +1304,13 @@ h3 {
 }
 
 .footer-contact a {
+  display: inline-block;
   font-size: 0.8125rem;
   color: var(--muted);
   text-decoration: none;
+  transform: translateZ(0);
+  transition: color var(--pop-duration) ease,
+    transform var(--pop-duration) var(--pop-ease);
 }
 
 .footer-contact a:hover {
@@ -1473,38 +1574,7 @@ h3 {
   opacity: 1;
 }
 
-/* ── Depth: desktop tilt (Work + Services) — stronger lift ── */
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .service-card:hover,
-  .service-card.is-inview:hover {
-    animation: none;
-    transform: perspective(900px) rotateX(3.6deg) rotateY(-5deg) translateY(-9px) scale(1.01);
-  }
-
-  .project-card:hover,
-  .project-card.is-inview:hover {
-    animation: none;
-    transform: perspective(900px) rotateX(3.2deg) rotateY(4.5deg) translateY(-9px) scale(1.01);
-  }
-
-  .service-card:nth-child(even):hover,
-  .service-card.is-inview:nth-child(even):hover {
-    animation: none;
-    transform: perspective(900px) rotateX(3.6deg) rotateY(4.8deg) translateY(-9px) scale(1.01);
-  }
-
-  .project-card:nth-child(odd):hover,
-  .project-card.is-inview:nth-child(odd):hover {
-    animation: none;
-    transform: perspective(900px) rotateX(3.2deg) rotateY(-4.2deg) translateY(-9px) scale(1.01);
-  }
-
-  .direction-card:hover,
-  .pricing-card:hover {
-    transform: translateY(-4px);
-  }
-}
-
+/* ── Reduced motion: opacity / border only (no 3D pop) ── */
 @media (prefers-reduced-motion: reduce) {
   .hero-haze-orb {
     animation: none !important;
@@ -1518,17 +1588,48 @@ h3 {
     display: none;
   }
 
-  .service-card:hover,
-  .project-card:hover {
-    transform: none;
-  }
-
   .btn,
   .btn:hover,
   .btn:active,
-  .btn:focus-visible {
+  .btn:focus-visible,
+  .service-card,
+  .service-card:hover,
+  .service-card:active,
+  .project-card,
+  .project-card:hover,
+  .project-card:active,
+  .pricing-card,
+  .pricing-card:hover,
+  .pricing-card:active,
+  .direction-card,
+  .direction-card:hover,
+  .direction-card:active,
+  .platform-card,
+  .platform-card:hover,
+  .platform-card:active,
+  .compare-card,
+  .compare-card:hover,
+  .compare-card:active,
+  .faq-item,
+  .faq-item:hover,
+  .faq-item:active,
+  .audience-tag,
+  .audience-tag:hover,
+  .audience-tag:active,
+  .nav-list a,
+  .nav-list a:hover,
+  .nav-list a:active,
+  .footer-links a,
+  .footer-links a:hover,
+  .footer-links a:active,
+  .footer-contact a,
+  .footer-contact a:hover,
+  .footer-contact a:active,
+  .logo,
+  .logo:hover {
     transform: none !important;
     box-shadow: none !important;
+    animation: none !important;
   }
 
   .btn:hover,
@@ -1538,8 +1639,24 @@ h3 {
 
   .btn-ghost:hover,
   .btn-ghost:active {
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .service-card:hover,
+  .project-card:hover,
+  .pricing-card:hover,
+  .direction-card:hover,
+  .platform-card:hover,
+  .compare-card:hover,
+  .faq-item:hover,
+  .audience-tag:hover {
+    border-color: var(--accent-ring);
+    opacity: 0.92;
+  }
+
+  .audience-tag:hover {
+    color: var(--accent);
   }
 
   .reveal {
