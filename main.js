@@ -734,10 +734,11 @@
     var height = 0;
 
     function countForWidth(w) {
-      if (w < 480) return 18;
-      if (w < 768) return 28;
-      if (w < 1100) return 42;
-      return 56;
+      // ~1.5–2x denser; still capped on small screens
+      if (w < 480) return 30;
+      if (w < 768) return 48;
+      if (w < 1100) return 72;
+      return 96;
     }
 
     function spawn(n) {
@@ -852,6 +853,149 @@
     }
   }
 
+  function setupScrollReveal() {
+    if (prefersReducedMotion() || !("IntersectionObserver" in window)) return;
+
+    var selector = [
+      ".intro .intro-inner",
+      ".section-header",
+      ".service-card",
+      ".project-card",
+      ".process-step",
+      ".how-step",
+      ".compare-card",
+      ".direction-card",
+      ".platform-card",
+      ".pricing-card",
+      ".audience-tag",
+      ".faq-item",
+      ".about .section-inner > *",
+      ".final-cta-inner",
+      ".value-strip-inner",
+      ".section-cta"
+    ].join(", ");
+
+    var nodes = Array.prototype.slice.call(document.querySelectorAll(selector));
+    if (!nodes.length) return;
+
+    nodes.forEach(function (el) {
+      el.classList.add("reveal");
+    });
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-inview");
+          observer.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -6% 0px", threshold: 0.12 }
+    );
+
+    nodes.forEach(function (el) {
+      observer.observe(el);
+    });
+  }
+
+  function setupCursorGlow() {
+    if (prefersReducedMotion()) return;
+    if (
+      !window.matchMedia ||
+      !window.matchMedia("(hover: hover) and (pointer: fine)").matches
+    ) {
+      return;
+    }
+
+    var main = document.getElementById("main");
+    if (!main) return;
+
+    var glow = document.createElement("div");
+    glow.className = "cursor-glow";
+    glow.setAttribute("aria-hidden", "true");
+    document.body.appendChild(glow);
+
+    var visible = false;
+    var x = 0;
+    var y = 0;
+    var tx = 0;
+    var ty = 0;
+    var raf = 0;
+    var active = true;
+
+    function paint() {
+      raf = 0;
+      tx += (x - tx) * 0.18;
+      ty += (y - ty) * 0.18;
+      glow.style.transform = "translate3d(" + tx + "px, " + ty + "px, 0)";
+      if (
+        active &&
+        visible &&
+        (Math.abs(x - tx) > 0.4 || Math.abs(y - ty) > 0.4)
+      ) {
+        raf = window.requestAnimationFrame(paint);
+      }
+    }
+
+    function requestPaint() {
+      if (!raf) raf = window.requestAnimationFrame(paint);
+    }
+
+    function onMove(e) {
+      x = e.clientX;
+      y = e.clientY;
+      if (!visible) {
+        visible = true;
+        glow.classList.add("is-on");
+        tx = x;
+        ty = y;
+        glow.style.transform = "translate3d(" + tx + "px, " + ty + "px, 0)";
+      }
+      requestPaint();
+    }
+
+    function onEnter() {
+      visible = true;
+      glow.classList.add("is-on");
+    }
+
+    function onLeave() {
+      visible = false;
+      glow.classList.remove("is-on");
+    }
+
+    main.addEventListener("pointermove", onMove, { passive: true });
+    main.addEventListener("pointerenter", onEnter);
+    main.addEventListener("pointerleave", onLeave);
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        active = false;
+        glow.classList.remove("is-on");
+        if (raf) {
+          window.cancelAnimationFrame(raf);
+          raf = 0;
+        }
+      } else {
+        active = true;
+      }
+    });
+
+    var mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    function onMotion() {
+      if (prefersReducedMotion()) {
+        glow.style.display = "none";
+        glow.classList.remove("is-on");
+        active = false;
+      } else {
+        glow.style.display = "";
+        active = true;
+      }
+    }
+    if (mq.addEventListener) mq.addEventListener("change", onMotion);
+    else if (mq.addListener) mq.addListener(onMotion);
+  }
+
   setSeo();
   renderBrand();
   renderNav();
@@ -875,4 +1019,6 @@
   setupActiveNav();
   setupParallax();
   setupHeroParticles();
+  setupScrollReveal();
+  setupCursorGlow();
 })();
