@@ -7,6 +7,7 @@
  *   poster:      "videos/poster.jpg"      → poster frame for video
  *   externalUrl: "https://..."            → link out (Drive / unlisted host)
  *   Leave video: null for a client-facing “Sample coming soon” placeholder.
+ 
  *
  * Hero is typography + atmospheric particles/haze (no phone mockup).
  * Unused-but-kept API fields (safe to leave or delete later):
@@ -135,7 +136,7 @@ window.ADMUSE_CONTENT = {
         "Menu items that bloom into frame with warm light and appetite-forward pacing.",
       aspect: "1 / 1",
       mediaLabel: "Sample coming soon",
-      video: null,
+      video: "videos/video-two.mp4",
       poster: null,
       externalUrl: null,
       tags: ["Food", "Square"]
