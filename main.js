@@ -676,6 +676,182 @@
     });
   }
 
+
+  function prefersReducedMotion() {
+    return (
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
+  }
+
+  function setupParallax() {
+    if (prefersReducedMotion()) return;
+    var layers = document.querySelectorAll("[data-parallax]");
+    if (!layers.length) return;
+
+    var ticking = false;
+    var apply = function () {
+      ticking = false;
+      var y = window.scrollY || window.pageYOffset || 0;
+      // Soft, transform-only parallax — capped so it stays subtle
+      var max = Math.min(y, 720);
+      for (var i = 0; i < layers.length; i++) {
+        var el = layers[i];
+        var factor = parseFloat(el.getAttribute("data-parallax")) || 0.08;
+        var offset = Math.round(max * factor * 100) / 100;
+        el.style.transform = "translate3d(0, " + offset + "px, 0)";
+      }
+    };
+
+    var onScroll = function () {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(apply);
+      }
+    };
+
+    apply();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
+  function setupHeroParticles() {
+    var canvas = document.querySelector(".hero-particles");
+    var hero = document.querySelector(".hero");
+    if (!canvas || !hero || !canvas.getContext) return;
+    if (prefersReducedMotion()) {
+      canvas.style.display = "none";
+      return;
+    }
+
+    var ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    var particles = [];
+    var running = true;
+    var rafId = 0;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var width = 0;
+    var height = 0;
+
+    function countForWidth(w) {
+      if (w < 480) return 18;
+      if (w < 768) return 28;
+      if (w < 1100) return 42;
+      return 56;
+    }
+
+    function spawn(n) {
+      particles = [];
+      for (var i = 0; i < n; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: 0.6 + Math.random() * 1.4,
+          a: 0.12 + Math.random() * 0.35,
+          vx: (Math.random() - 0.5) * 0.18,
+          vy: -0.05 - Math.random() * 0.22,
+          tw: Math.random() * Math.PI * 2,
+          tws: 0.008 + Math.random() * 0.012
+        });
+      }
+    }
+
+    function resize() {
+      var rect = hero.getBoundingClientRect();
+      width = Math.max(1, Math.floor(rect.width));
+      height = Math.max(1, Math.floor(rect.height));
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      spawn(countForWidth(width));
+    }
+
+    function draw() {
+      if (!running) return;
+      rafId = window.requestAnimationFrame(draw);
+      ctx.clearRect(0, 0, width, height);
+
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.tw += p.tws;
+
+        if (p.y < -4) {
+          p.y = height + 4;
+          p.x = Math.random() * width;
+        }
+        if (p.x < -4) p.x = width + 4;
+        if (p.x > width + 4) p.x = -4;
+
+        var alpha = p.a * (0.55 + 0.45 * Math.sin(p.tw));
+        ctx.beginPath();
+        ctx.fillStyle = "rgba(100, 255, 218, " + alpha.toFixed(3) + ")";
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+
+        // sparse soft white sparkles for editorial depth (not purple SaaS)
+        if (i % 5 === 0) {
+          ctx.beginPath();
+          ctx.fillStyle = "rgba(232, 237, 242, " + (alpha * 0.45).toFixed(3) + ")";
+          ctx.arc(p.x + 0.4, p.y - 0.4, Math.max(0.4, p.r * 0.55), 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    }
+
+    function start() {
+      if (running) return;
+      running = true;
+      rafId = window.requestAnimationFrame(draw);
+    }
+
+    function stop() {
+      running = false;
+      if (rafId) {
+        window.cancelAnimationFrame(rafId);
+        rafId = 0;
+      }
+    }
+
+    function onVisibility() {
+      if (document.hidden) stop();
+      else {
+        if (!prefersReducedMotion()) start();
+      }
+    }
+
+    var mq = window.matchMedia
+      ? window.matchMedia("(prefers-reduced-motion: reduce)")
+      : null;
+    function onMotionChange() {
+      if (prefersReducedMotion()) {
+        stop();
+        canvas.style.display = "none";
+        ctx.clearRect(0, 0, width, height);
+      } else {
+        canvas.style.display = "";
+        resize();
+        start();
+      }
+    }
+
+    resize();
+    if (document.hidden) {
+      running = false;
+    } else {
+      draw();
+    }
+    window.addEventListener("resize", resize, { passive: true });
+    document.addEventListener("visibilitychange", onVisibility);
+    if (mq) {
+      if (mq.addEventListener) mq.addEventListener("change", onMotionChange);
+      else if (mq.addListener) mq.addListener(onMotionChange);
+    }
+  }
+
   setSeo();
   renderBrand();
   renderNav();
@@ -697,4 +873,6 @@
   renderFooter();
   setupNavToggle();
   setupActiveNav();
+  setupParallax();
+  setupHeroParticles();
 })();

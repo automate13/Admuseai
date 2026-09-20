@@ -156,3 +156,5 @@ git push origin main
 - Type: **Syne** (display) + **DM Sans** (body)
 - Sticky blurred header, strong type, minimal glass
 - Mobile nav (hamburger), skip link, focus styles, reduced-motion
+- **Depth (no Three.js):** layered card shadows, desktop hover tilt on Work/Service cards, soft transform parallax on hero glow, floating hero media frame
+- **Hero ambience:** lightweight vanilla canvas particles behind the hero only (capped on mobile; paused for reduced-motion / hidden tabs)
