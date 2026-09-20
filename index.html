@@ -55,44 +55,20 @@
     </header>
 
     <main id="main">
-      <!-- 1. Hero -->
+      <!-- 1. Hero — typography + atmospheric field (no device mockup) -->
       <section class="hero section" id="home" aria-labelledby="hero-title">
         <canvas class="hero-particles" aria-hidden="true"></canvas>
+        <div class="hero-haze" aria-hidden="true">
+          <span class="hero-haze-orb hero-haze-orb-a"></span>
+          <span class="hero-haze-orb hero-haze-orb-b"></span>
+          <span class="hero-haze-orb hero-haze-orb-c"></span>
+        </div>
         <div class="shell hero-inner">
           <div class="hero-copy">
             <p class="eyebrow" data-bind="hero.eyebrow"></p>
             <h1 id="hero-title" class="hero-title" data-bind="hero.headline"></h1>
             <p class="lede" data-bind="hero.subhead"></p>
             <div class="hero-actions" data-bind="hero.actions"></div>
-          </div>
-          <div class="hero-visual" aria-hidden="true">
-            <div class="hero-phone">
-              <div class="hero-phone-glow"></div>
-              <div class="hero-phone-device">
-                <div class="hero-phone-bezel">
-                  <div class="hero-phone-island"></div>
-                  <div class="hero-phone-screen">
-                    <div class="hero-phone-screen-inner">
-                      <span class="hero-phone-label" data-bind="hero.frameLabel"></span>
-                      <p class="hero-phone-hint" data-bind="hero.frameHint"></p>
-                    </div>
-                  </div>
-                  <div class="hero-phone-home"></div>
-                </div>
-              </div>
-              <!-- Pop-out still: overlaps bezel; swap via content.js → hero.popImage -->
-              <div class="hero-pop">
-                <div class="hero-pop-placeholder" aria-hidden="true"></div>
-                <img
-                  class="hero-pop-img"
-                  data-bind="hero.popImage"
-                  alt=""
-                  width="360"
-                  height="640"
-                  decoding="async"
-                />
-              </div>
-            </div>
           </div>
         </div>
       </section>

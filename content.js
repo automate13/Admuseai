@@ -8,10 +8,9 @@
  *   externalUrl: "https://..."            → link out (Drive / unlisted host)
  *   Leave video: null for a client-facing “Sample coming soon” placeholder.
  *
- * Hero pop-out image (phone mockup):
- *   hero.popImage → path under images/ (default: "images/hero-pop.png")
- *   Drop a 9:16 still at that path; CSS gradient shows until the file exists.
- *   No video autoplay — still image only.
+ * Hero is typography + atmospheric particles/haze (no phone mockup).
+ * Unused-but-kept API fields (safe to leave or delete later):
+ *   hero.frameLabel, hero.frameHint, hero.popImage
  *
  * Pricing: set price to "Contact for quote", "—", or your own string.
  * Do NOT invent dollar amounts unless Jay confirms them.
@@ -50,9 +49,9 @@ window.ADMUSE_CONTENT = {
       href: "mailto:auto.mate0313@gmail.com"
     },
     ctaSecondary: { label: "View Our Work →", href: "#work" },
+    /* Unused legacy fields — kept so older content.js forks stay valid */
     frameLabel: "UGC · 9:16",
     frameHint: "Your next ad lives here",
-    /* Pop-out still emerging from the phone — swap file or path anytime */
     popImage: "images/hero-pop.png"
   },
 

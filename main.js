@@ -81,30 +81,7 @@
     text(document.querySelector('[data-bind="hero.eyebrow"]'), hero.eyebrow);
     text(document.querySelector('[data-bind="hero.headline"]'), hero.headline);
     text(document.querySelector('[data-bind="hero.subhead"]'), hero.subhead);
-    text(document.querySelector('[data-bind="hero.frameLabel"]'), hero.frameLabel);
-    text(document.querySelector('[data-bind="hero.frameHint"]'), hero.frameHint);
-
-    var popImg = document.querySelector('[data-bind="hero.popImage"]');
-    if (popImg) {
-      var src = hero.popImage || "images/hero-pop.png";
-      popImg.alt = "";
-      popImg.addEventListener(
-        "load",
-        function () {
-          popImg.classList.add("is-loaded");
-        },
-        { once: true }
-      );
-      popImg.addEventListener(
-        "error",
-        function () {
-          popImg.removeAttribute("src");
-          popImg.classList.remove("is-loaded");
-        },
-        { once: true }
-      );
-      popImg.src = src;
-    }
+    /* hero.frameLabel / frameHint / popImage kept in content.js API but unused (no device mockup) */
 
     var actions = document.querySelector('[data-bind="hero.actions"]');
     if (!actions) return;
@@ -795,6 +772,21 @@
       if (!running) return;
       rafId = window.requestAnimationFrame(draw);
       ctx.clearRect(0, 0, width, height);
+
+      /* Soft atmospheric wash behind particles (mint + cool white) */
+      var g = ctx.createRadialGradient(
+        width * 0.5,
+        height * 0.42,
+        0,
+        width * 0.5,
+        height * 0.42,
+        Math.max(width, height) * 0.55
+      );
+      g.addColorStop(0, "rgba(100, 255, 218, 0.045)");
+      g.addColorStop(0.45, "rgba(100, 255, 218, 0.015)");
+      g.addColorStop(1, "rgba(100, 255, 218, 0)");
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, width, height);
 
       for (var i = 0; i < particles.length; i++) {
         var p = particles[i];

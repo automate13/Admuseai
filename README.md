@@ -41,7 +41,7 @@ Sticky header + mobile hamburger. `content.js` drives all copy.
 | `content.js` | **All copy, projects, pricing, FAQ** — edit here |
 | `main.js` | Renders content, nav, FAQ, HTML5 video |
 | `videos/` | Drop MP4s here |
-| `images/` | Hero pop-out still (`hero-pop.png`) and other static assets |
+| `images/` | Optional static assets (hero no longer requires a pop image) |
 | `privacy/` · `terms/` | Simple placeholder legal pages |
 | `vercel.json` | Static hosting headers |
 
@@ -74,23 +74,11 @@ pricing: {
 
 Replace `price` with real figures when ready (e.g. `"$X"` or `"From $X"`).
 
-### Hero pop-out image (phone mockup)
+### Hero
 
-The hero uses a **static black smartphone** with a still that appears to pop out of the screen.
+Typography + CTAs over a soft mint light field and canvas particles. **No phone / device mockup.**
 
-1. Export a **9:16** UGC / product still (PNG or JPG).
-2. Save it as `images/hero-pop.png` (create `images/` if needed).
-3. Or change the path in `content.js`:
-
-```js
-hero: {
-  // ...
-  frameLabel: "UGC · 9:16",
-  popImage: "images/hero-pop.png"  // ← swap path or filename
-}
-```
-
-Until the file exists, a mint/dark CSS gradient placeholder shows. No video autoplay on the hero.
+`content.js` still accepts unused legacy fields (`hero.frameLabel`, `hero.frameHint`, `hero.popImage`) so older forks remain valid — they are not rendered.
 
 ### Add a project video
 
@@ -175,5 +163,5 @@ git push origin main
 - Type: **Syne** (display) + **DM Sans** (body)
 - Sticky blurred header, strong type, minimal glass
 - Mobile nav (hamburger), skip link, focus styles, reduced-motion
-- **Depth (no Three.js):** layered card shadows, desktop hover tilt on Work/Service cards, soft transform parallax on hero glow, static black phone hero with pop-out still (hover lift only — no continuous float)
+- **Depth (no Three.js):** layered card shadows, desktop hover tilt on Work/Service cards, soft transform parallax on page glow, typography-forward hero over atmospheric mint haze
 - **Hero ambience:** lightweight vanilla canvas particles behind the hero only (capped on mobile; paused for reduced-motion / hidden tabs)
