@@ -66,18 +66,31 @@
             <div class="hero-actions" data-bind="hero.actions"></div>
           </div>
           <div class="hero-visual" aria-hidden="true">
-            <div class="ugc-frame">
-              <div class="ugc-frame-bar">
-                <span class="ugc-dot"></span>
-                <span class="ugc-dot"></span>
-                <span class="ugc-dot"></span>
-                <span class="ugc-frame-label" data-bind="hero.frameLabel"></span>
-              </div>
-              <div class="ugc-frame-body">
-                <div class="ugc-placeholder">
-                  <span class="ugc-play" aria-hidden="true"></span>
-                  <p data-bind="hero.frameHint"></p>
+            <div class="hero-phone">
+              <div class="hero-phone-glow"></div>
+              <div class="hero-phone-device">
+                <div class="hero-phone-bezel">
+                  <div class="hero-phone-island"></div>
+                  <div class="hero-phone-screen">
+                    <div class="hero-phone-screen-inner">
+                      <span class="hero-phone-label" data-bind="hero.frameLabel"></span>
+                      <p class="hero-phone-hint" data-bind="hero.frameHint"></p>
+                    </div>
+                  </div>
+                  <div class="hero-phone-home"></div>
                 </div>
+              </div>
+              <!-- Pop-out still: overlaps bezel; swap via content.js → hero.popImage -->
+              <div class="hero-pop">
+                <div class="hero-pop-placeholder" aria-hidden="true"></div>
+                <img
+                  class="hero-pop-img"
+                  data-bind="hero.popImage"
+                  alt=""
+                  width="360"
+                  height="640"
+                  decoding="async"
+                />
               </div>
             </div>
           </div>
