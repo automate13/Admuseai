@@ -139,6 +139,17 @@ window.ADMUSE_CONTENT = {
       poster: null,
       externalUrl: null,
       tags: ["Food", "Square"]
+    },    {
+      id: "floating-drink",
+      title: "Floating drink UGC",
+      description:
+        "Sidewalk fisheye hook — she spots a floating iced drink, grabs it, and the product sells itself.",
+      aspect: "9 / 16",
+      mediaLabel: "Sample coming soon",
+      video: "videos/video-three.mp4.mp4",
+      poster: null,
+      externalUrl: null,
+      tags: ["Vertical", "UGC", "Beverage"]
     },
 
   ],
