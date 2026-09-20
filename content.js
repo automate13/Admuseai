@@ -123,7 +123,7 @@ window.ADMUSE_CONTENT = {
         "Dynamic product toss against a soft urban billboard — kinetic, branded, scroll-stopping.",
       aspect: "9 / 16",
       mediaLabel: "Sample coming soon",
-      video: "videos/girl-drink.mp4",
+     video: "videos/Girl drink Fianl.mp4",
       poster: null,
       externalUrl: null,
       tags: ["Vertical", "Product"]
