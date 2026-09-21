@@ -66,21 +66,46 @@
     }
 
     var ctaWrap = document.querySelector('[data-bind="navCta"]');
-    if (ctaWrap && content.navCta) {
+    if (ctaWrap) {
       clear(ctaWrap);
-      var btn = makeBtn(content.navCta, true);
-      if (btn) {
-        btn.classList.add("btn-nav");
-        ctaWrap.appendChild(btn);
+      if (content.navCtaSecondary) {
+        var ghost = makeBtn(content.navCtaSecondary, false);
+        if (ghost) {
+          ghost.classList.add("btn-nav", "btn-nav-ghost");
+          ctaWrap.appendChild(ghost);
+        }
+      }
+      if (content.navCta) {
+        var btn = makeBtn(content.navCta, true);
+        if (btn) {
+          btn.classList.add("btn-nav");
+          ctaWrap.appendChild(btn);
+        }
       }
     }
   }
 
   function renderHero() {
     var hero = content.hero || {};
-    text(document.querySelector('[data-bind="hero.eyebrow"]'), hero.eyebrow);
+    var badgeEl = document.querySelector('[data-bind="hero.badge"]');
+    var badgeText = hero.badge || hero.eyebrow || "";
+    if (badgeEl) {
+      text(badgeEl, badgeText);
+      if (!badgeText) badgeEl.hidden = true;
+    }
+    var eyebrowEl = document.querySelector('[data-bind="hero.eyebrow"]');
+    if (eyebrowEl) {
+      if (badgeEl && badgeText) {
+        eyebrowEl.hidden = true;
+      } else {
+        text(eyebrowEl, hero.eyebrow);
+      }
+    }
     text(document.querySelector('[data-bind="hero.headline"]'), hero.headline);
-    text(document.querySelector('[data-bind="hero.subhead"]'), hero.subhead);
+    text(
+      document.querySelector('[data-bind="hero.subhead"]'),
+      hero.subhead || hero.subhead || ""
+    );
     /* hero.frameLabel / frameHint / popImage kept in content.js API but unused (no device mockup) */
 
     var actions = document.querySelector('[data-bind="hero.actions"]');
@@ -711,7 +736,7 @@
     var links = Array.prototype.slice.call(
       document.querySelectorAll(".nav-list a")
     );
-    var ids = ["work", "services", "how-it-works", "pricing", "about", "home"];
+    var ids = ["work", "services", "process", "why", "faq", "contact", "home"];
     var sections = ids
       .map(function (id) {
         return document.getElementById(id);
@@ -840,7 +865,7 @@
       rafId = window.requestAnimationFrame(draw);
       ctx.clearRect(0, 0, width, height);
 
-      /* Soft atmospheric wash behind particles (mint + cool white) */
+      /* Soft atmospheric wash behind particles (ruby + cool white) */
       var g = ctx.createRadialGradient(
         width * 0.5,
         height * 0.42,
@@ -849,9 +874,9 @@
         height * 0.42,
         Math.max(width, height) * 0.55
       );
-      g.addColorStop(0, "rgba(100, 255, 218, 0.045)");
-      g.addColorStop(0.45, "rgba(100, 255, 218, 0.015)");
-      g.addColorStop(1, "rgba(100, 255, 218, 0)");
+      g.addColorStop(0, "rgba(224, 130, 180, 0.045)");
+      g.addColorStop(0.45, "rgba(224, 130, 180, 0.015)");
+      g.addColorStop(1, "rgba(224, 130, 180, 0)");
       ctx.fillStyle = g;
       ctx.fillRect(0, 0, width, height);
 
@@ -870,11 +895,11 @@
 
         var alpha = p.a * (0.55 + 0.45 * Math.sin(p.tw));
         ctx.beginPath();
-        ctx.fillStyle = "rgba(100, 255, 218, " + alpha.toFixed(3) + ")";
+        ctx.fillStyle = "rgba(224, 130, 180, " + alpha.toFixed(3) + ")";
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fill();
 
-        // sparse soft white sparkles for editorial depth (not purple SaaS)
+        // sparse soft white sparkles for editorial depth (soft ruby, not purple SaaS)
         if (i % 5 === 0) {
           ctx.beginPath();
           ctx.fillStyle = "rgba(232, 237, 242, " + (alpha * 0.45).toFixed(3) + ")";

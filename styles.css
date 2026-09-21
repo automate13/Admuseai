@@ -1,22 +1,25 @@
-/* Admuse AI — editorial dark / mint accent */
+/* Admuse AI — editorial dark / soft ruby accent */
 
 :root {
-  --bg: #0a0c0f;
-  --bg-elevated: #111418;
-  --bg-card: #12161b;
-  --text: #e8edf2;
-  --muted: #8b97a8;
-  --accent: #64ffda;
-  --accent-dim: rgba(100, 255, 218, 0.12);
-  --accent-ring: rgba(100, 255, 218, 0.28);
+  --bg: #0c0a0b;
+  --bg-elevated: #141012;
+  --bg-card: #181214;
+  --text: #f3eef1;
+  --muted: #9a8f95;
+  --accent: #C75B78;
+  --accent-dim: rgba(199, 91, 120, 0.14);
+  --accent-ring: rgba(224, 130, 180, 0.32);
+  --accent-soft: #E082B4;
+  --accent-deep: #9B2335;
+  --accent-glow: rgba(224, 130, 180, 0.18);
   --border: rgba(255, 255, 255, 0.08);
   --border-strong: rgba(255, 255, 255, 0.14);
   --font-display: "Syne", system-ui, sans-serif;
   --font-body: "DM Sans", system-ui, -apple-system, sans-serif;
-  --shell: min(1080px, calc(100% - 2.75rem));
+  --shell: min(1120px, calc(100% - 2.5rem));
   --shell-narrow: min(720px, calc(100% - 2.75rem));
   --header-h: 4.25rem;
-  --radius: 16px;
+  --radius: 18px;
   --radius-sm: 10px;
   --shadow-card:
     0 1px 0 rgba(255, 255, 255, 0.045) inset,
@@ -26,7 +29,7 @@
     0 1px 0 rgba(255, 255, 255, 0.06) inset,
     0 10px 28px rgba(0, 0, 0, 0.4),
     0 28px 56px rgba(0, 0, 0, 0.42),
-    0 0 36px rgba(100, 255, 218, 0.07);
+    0 0 36px rgba(199, 91, 120, 0.07);
   --shadow-elevated:
     0 1px 0 rgba(255, 255, 255, 0.04) inset,
     0 12px 36px rgba(0, 0, 0, 0.35),
@@ -35,18 +38,18 @@
   --pop-duration: 0.24s;
   --pop-shadow-btn:
     0 12px 24px rgba(0, 0, 0, 0.32),
-    0 20px 40px rgba(100, 255, 218, 0.16);
+    0 14px 32px rgba(155, 35, 53, 0.16);
   --pop-shadow-btn-primary:
     0 12px 24px rgba(0, 0, 0, 0.28),
-    0 20px 42px rgba(100, 255, 218, 0.28);
+    0 16px 36px rgba(155, 35, 53, 0.22);
   --pop-shadow-btn-press:
     0 8px 20px rgba(0, 0, 0, 0.3),
-    0 14px 30px rgba(100, 255, 218, 0.18);
+    0 14px 30px rgba(199, 91, 120, 0.18);
   --pop-shadow-card:
     0 1px 0 rgba(255, 255, 255, 0.06) inset,
     0 12px 32px rgba(0, 0, 0, 0.42),
     0 28px 56px rgba(0, 0, 0, 0.4),
-    0 0 40px rgba(100, 255, 218, 0.08);
+    0 0 40px rgba(199, 91, 120, 0.08);
   color-scheme: dark;
 }
 
@@ -107,14 +110,14 @@ body.nav-open {
 
 .bg-glow-a {
   background:
-    radial-gradient(ellipse 42% 32% at 78% 8%, rgba(100, 255, 218, 0.075), transparent 58%),
-    radial-gradient(ellipse 28% 22% at 92% 28%, rgba(100, 255, 218, 0.035), transparent 55%);
+    radial-gradient(ellipse 42% 32% at 78% 8%, rgba(199, 91, 120, 0.05), transparent 60%),
+    radial-gradient(ellipse 28% 22% at 92% 28%, rgba(199, 91, 120, 0.035), transparent 55%);
 }
 
 .bg-glow-b {
   background:
-    radial-gradient(ellipse 38% 28% at 12% 42%, rgba(100, 255, 218, 0.04), transparent 52%),
-    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(100, 255, 218, 0.025), transparent 60%);
+    radial-gradient(ellipse 38% 28% at 12% 42%, rgba(199, 91, 120, 0.04), transparent 52%),
+    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(199, 91, 120, 0.025), transparent 60%);
 }
 
 img,
@@ -177,7 +180,7 @@ a:hover {
   top: 0;
   z-index: 100;
   height: var(--header-h);
-  background: rgba(10, 12, 15, 0.85);
+  background: rgba(12, 10, 11, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid transparent;
@@ -186,7 +189,7 @@ a:hover {
 
 .site-header.is-scrolled {
   border-bottom-color: var(--border);
-  background: rgba(10, 12, 15, 0.92);
+  background: rgba(12, 10, 11, 0.92);
 }
 
 .header-inner {
@@ -405,9 +408,10 @@ h3 {
 }
 
 .btn-primary {
-  background: var(--accent);
-  color: #04120e;
-  border-color: var(--accent);
+  background: linear-gradient(180deg, #D46A86 0%, var(--accent) 100%);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset, 0 8px 24px rgba(155, 35, 53, 0.22);
 }
 
 .btn-ghost {
@@ -450,7 +454,7 @@ h3 {
 
   .btn-primary:hover,
   .btn-primary:focus-visible {
-    color: #04120e;
+    color: #fff;
     box-shadow: var(--pop-shadow-btn-primary);
   }
 
@@ -485,7 +489,7 @@ h3 {
     border-color: var(--accent-ring);
     color: var(--accent);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28),
-      0 0 24px rgba(100, 255, 218, 0.08);
+      0 0 24px rgba(199, 91, 120, 0.08);
     transform: perspective(700px) translate3d(0, -3px, 8px) rotateX(1.25deg)
       scale(1.04);
   }
@@ -556,7 +560,7 @@ h3 {
   opacity: 0.9;
 }
 
-/* Soft mint light field behind copy */
+/* Soft ruby light field behind copy */
 .hero-haze {
   position: absolute;
   inset: 0;
@@ -570,10 +574,10 @@ h3 {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 70% 55% at 50% 42%, rgba(100, 255, 218, 0.07), transparent 62%),
-    radial-gradient(ellipse 45% 40% at 18% 70%, rgba(100, 255, 218, 0.04), transparent 58%),
+    radial-gradient(ellipse 70% 55% at 50% 42%, rgba(199, 91, 120, 0.05), transparent 64%),
+    radial-gradient(ellipse 45% 40% at 18% 70%, rgba(199, 91, 120, 0.04), transparent 58%),
     radial-gradient(ellipse 40% 35% at 88% 28%, rgba(232, 237, 242, 0.035), transparent 55%),
-    linear-gradient(180deg, rgba(10, 12, 15, 0) 0%, rgba(10, 12, 15, 0.35) 100%);
+    linear-gradient(180deg, rgba(12, 10, 11, 0) 0%, rgba(12, 10, 11, 0.35) 100%);
 }
 
 .hero-haze-orb {
@@ -590,7 +594,7 @@ h3 {
   top: 8%;
   left: 50%;
   transform: translateX(-52%);
-  background: radial-gradient(circle, rgba(100, 255, 218, 0.16) 0%, transparent 68%);
+  background: radial-gradient(circle, rgba(199, 91, 120, 0.11) 0%, transparent 70%);
 }
 
 .hero-haze-orb-b {
@@ -598,7 +602,7 @@ h3 {
   height: min(340px, 50vw);
   bottom: 6%;
   left: 8%;
-  background: radial-gradient(circle, rgba(100, 255, 218, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(224, 130, 180, 0.06) 0%, transparent 72%);
 }
 
 .hero-haze-orb-c {
@@ -767,8 +771,8 @@ h3 {
 /* ── Work ── */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.35rem;
 }
 
 .project-card {
@@ -785,7 +789,7 @@ h3 {
 .project-media {
   position: relative;
   width: 100%;
-  background: #0d1014;
+  background: #120e10;
   border-bottom: 1px solid var(--border);
   overflow: hidden;
 }
@@ -939,7 +943,7 @@ h3 {
 
 .compare-card.is-highlight {
   border-color: var(--accent-ring);
-  background: linear-gradient(180deg, rgba(100, 255, 218, 0.05), var(--bg-card));
+  background: linear-gradient(180deg, rgba(199, 91, 120, 0.08), var(--bg-card));
   box-shadow: var(--shadow-card-hover);
 }
 
@@ -1214,7 +1218,7 @@ h3 {
   border: 1px solid var(--border);
   border-radius: calc(var(--radius) + 4px);
   background:
-    linear-gradient(135deg, rgba(100, 255, 218, 0.05), transparent 50%),
+    linear-gradient(135deg, rgba(199, 91, 120, 0.07), transparent 55%),
     var(--bg-card);
   box-shadow: var(--shadow-elevated);
   text-align: center;
@@ -1376,7 +1380,7 @@ h3 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(10, 12, 15, 0.97);
+    background: rgba(12, 10, 11, 0.97);
     border-bottom: none;
     padding: 1.25rem 1.5rem 2rem;
     display: none;
@@ -1534,8 +1538,8 @@ h3 {
   opacity: 0;
   background: radial-gradient(
     circle closest-side,
-    rgba(100, 255, 218, 0.1) 0%,
-    rgba(100, 255, 218, 0.035) 42%,
+    rgba(224, 130, 180, 0.09) 0%,
+    rgba(199, 91, 120, 0.03) 42%,
     transparent 72%
   );
   transition: opacity 0.4s ease;
@@ -1647,3 +1651,61 @@ h3 {
     animation: none !important;
   }
 }
+
+
+/* ── Soft ruby hero badge (Stitch-like) ── */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 auto 1.25rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid rgba(224, 130, 180, 0.28);
+  background: rgba(199, 91, 120, 0.1);
+  color: var(--accent-soft);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.hero-badge:empty {
+  display: none;
+}
+
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.btn-nav-ghost {
+  padding: 0.55rem 1rem !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.03em !important;
+}
+
+/* Work: keep vertical videos readable in 3-col */
+@media (min-width: 900px) {
+  .project-grid .project-card:nth-child(1) .project-media,
+  .project-grid .project-card:nth-child(3) .project-media {
+    max-height: 420px;
+  }
+}
+
+@media (max-width: 900px) {
+  .project-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Soft ruby Stitch polish */
+
+.footer-brand { min-width: 0; }
+.footer-nav { min-width: 0; }

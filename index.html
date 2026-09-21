@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0a0c0f" />
+    <meta name="theme-color" content="#0c0a0b" />
     <meta name="color-scheme" content="dark" />
     <title>Admuse AI — AI UGC & Product Ads for Modern Brands</title>
     <meta
@@ -55,7 +55,7 @@
     </header>
 
     <main id="main">
-      <!-- 1. Hero — typography + atmospheric field (no device mockup) -->
+      <!-- Hero -->
       <section class="hero section" id="home" aria-labelledby="hero-title">
         <canvas class="hero-particles" aria-hidden="true"></canvas>
         <div class="hero-haze" aria-hidden="true">
@@ -65,7 +65,8 @@
         </div>
         <div class="shell hero-inner">
           <div class="hero-copy">
-            <p class="eyebrow" data-bind="hero.eyebrow"></p>
+            <p class="hero-badge" data-bind="hero.badge"></p>
+            <p class="eyebrow hero-eyebrow" data-bind="hero.eyebrow" hidden></p>
             <h1 id="hero-title" class="hero-title" data-bind="hero.headline"></h1>
             <p class="lede" data-bind="hero.subhead"></p>
             <div class="hero-actions" data-bind="hero.actions"></div>
@@ -73,34 +74,12 @@
         </div>
       </section>
 
-      <!-- 2. Value strip -->
+      <!-- Value strip -->
       <section class="value-strip" aria-label="Capabilities">
         <div class="shell value-strip-inner" data-bind="valueStrip"></div>
       </section>
 
-      <!-- 3. Intro -->
-      <section class="intro section" id="intro" aria-labelledby="intro-title">
-        <div class="shell section-inner intro-inner">
-          <p class="eyebrow" data-bind="intro.eyebrow"></p>
-          <h2 id="intro-title" data-bind="intro.title"></h2>
-          <p class="section-intro" data-bind="intro.body"></p>
-          <div data-bind="intro.cta"></div>
-        </div>
-      </section>
-
-      <!-- 4. Services -->
-      <section class="services section" id="services" aria-labelledby="services-title">
-        <div class="shell section-inner section-inner-wide">
-          <header class="section-header">
-            <p class="eyebrow" data-bind="services.eyebrow"></p>
-            <h2 id="services-title" data-bind="services.title"></h2>
-            <p class="section-intro" data-bind="services.intro"></p>
-          </header>
-          <div class="service-grid" data-bind="services.items" role="list"></div>
-        </div>
-      </section>
-
-      <!-- 5. Work -->
+      <!-- Featured work -->
       <section class="work section" id="work" aria-labelledby="work-title">
         <div class="shell section-inner section-inner-wide">
           <header class="section-header">
@@ -112,7 +91,19 @@
         </div>
       </section>
 
-      <!-- 6. Product → Ad process -->
+      <!-- Services -->
+      <section class="services section" id="services" aria-labelledby="services-title">
+        <div class="shell section-inner section-inner-wide">
+          <header class="section-header">
+            <p class="eyebrow" data-bind="services.eyebrow"></p>
+            <h2 id="services-title" data-bind="services.title"></h2>
+            <p class="section-intro" data-bind="services.intro"></p>
+          </header>
+          <div class="service-grid" data-bind="services.items" role="list"></div>
+        </div>
+      </section>
+
+      <!-- Process -->
       <section class="process section" id="process" aria-labelledby="process-title">
         <div class="shell section-inner section-inner-wide">
           <header class="section-header">
@@ -124,7 +115,7 @@
         </div>
       </section>
 
-      <!-- 7. Why Admuse comparison -->
+      <!-- Why Admuse -->
       <section class="comparison section" id="why" aria-labelledby="comparison-title">
         <div class="shell section-inner section-inner-wide">
           <header class="section-header">
@@ -136,69 +127,7 @@
         </div>
       </section>
 
-      <!-- 8. Creative directions -->
-      <section class="directions section" id="directions" aria-labelledby="directions-title">
-        <div class="shell section-inner section-inner-wide">
-          <header class="section-header">
-            <p class="eyebrow" data-bind="directions.eyebrow"></p>
-            <h2 id="directions-title" data-bind="directions.title"></h2>
-            <p class="section-intro" data-bind="directions.intro"></p>
-          </header>
-          <div class="directions-grid" data-bind="directions.items" role="list"></div>
-        </div>
-      </section>
-
-      <!-- 9. How It Works -->
-      <section class="how section" id="how-it-works" aria-labelledby="how-title">
-        <div class="shell section-inner section-inner-wide">
-          <header class="section-header">
-            <p class="eyebrow" data-bind="howItWorks.eyebrow"></p>
-            <h2 id="how-title" data-bind="howItWorks.title"></h2>
-            <p class="section-intro" data-bind="howItWorks.intro"></p>
-          </header>
-          <ol class="how-grid" data-bind="howItWorks.steps"></ol>
-          <div class="section-cta" data-bind="howItWorks.cta"></div>
-        </div>
-      </section>
-
-      <!-- 10. Who We Serve -->
-      <section class="audience section" id="audience" aria-labelledby="audience-title">
-        <div class="shell section-inner">
-          <header class="section-header">
-            <p class="eyebrow" data-bind="whoWeServe.eyebrow"></p>
-            <h2 id="audience-title" data-bind="whoWeServe.title"></h2>
-            <p class="section-intro" data-bind="whoWeServe.intro"></p>
-          </header>
-          <ul class="audience-tags" data-bind="whoWeServe.tags" role="list"></ul>
-        </div>
-      </section>
-
-      <!-- 11. Platforms -->
-      <section class="platforms section" id="platforms" aria-labelledby="platforms-title">
-        <div class="shell section-inner section-inner-wide">
-          <header class="section-header">
-            <p class="eyebrow" data-bind="platforms.eyebrow"></p>
-            <h2 id="platforms-title" data-bind="platforms.title"></h2>
-            <p class="section-intro" data-bind="platforms.intro"></p>
-          </header>
-          <div class="platform-grid" data-bind="platforms.items" role="list"></div>
-        </div>
-      </section>
-
-      <!-- 12. Pricing -->
-      <section class="pricing section" id="pricing" aria-labelledby="pricing-title">
-        <div class="shell section-inner section-inner-wide">
-          <header class="section-header">
-            <p class="eyebrow" data-bind="pricing.eyebrow"></p>
-            <h2 id="pricing-title" data-bind="pricing.title"></h2>
-            <p class="section-intro" data-bind="pricing.intro"></p>
-          </header>
-          <div class="pricing-grid" data-bind="pricing.tiers" role="list"></div>
-          <p class="pricing-note" data-bind="pricing.note"></p>
-        </div>
-      </section>
-
-      <!-- 13. FAQ -->
+      <!-- FAQ -->
       <section class="faq section" id="faq" aria-labelledby="faq-title">
         <div class="shell section-inner">
           <header class="section-header">
@@ -209,16 +138,7 @@
         </div>
       </section>
 
-      <!-- About (nav target) -->
-      <section class="about section" id="about" aria-labelledby="about-title">
-        <div class="shell section-inner">
-          <p class="eyebrow" data-bind="about.eyebrow"></p>
-          <h2 id="about-title" data-bind="about.title"></h2>
-          <p class="section-intro about-body" data-bind="about.body"></p>
-        </div>
-      </section>
-
-      <!-- 14. Final CTA -->
+      <!-- Final CTA -->
       <section class="final-cta section" id="contact" aria-labelledby="final-cta-title">
         <div class="shell section-inner final-cta-inner">
           <p class="eyebrow" data-bind="finalCta.eyebrow"></p>

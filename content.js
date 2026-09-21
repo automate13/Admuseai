@@ -1,19 +1,14 @@
 /**
- * Admuse AI — single source of truth for copy, projects, pricing, FAQ.
+ * Admuse AI — single source of truth for copy & projects.
  * Edit this file, save, refresh. No build step.
+ *
+ * Soft ruby Stitch-style landing — no pricing, no fake metrics.
  *
  * Projects support optional media fields:
  *   video:       "videos/your-file.mp4"   → HTML5 <video> player
  *   poster:      "videos/poster.jpg"      → poster frame for video
  *   externalUrl: "https://..."            → link out (Drive / unlisted host)
- *   Leave video: null for a client-facing “Sample coming soon” placeholder.
- *
- * Hero is typography + atmospheric particles/haze (no phone mockup).
- * Unused-but-kept API fields (safe to leave or delete later):
- *   hero.frameLabel, hero.frameHint, hero.popImage
- *
- * Pricing: set price to "Contact for quote", "—", or your own string.
- * Do NOT invent dollar amounts unless Jay confirms them.
+ *   Leave video: null for a “Sample coming soon” placeholder.
  */
 window.ADMUSE_CONTENT = {
   brand: "ADMUSE AI",
@@ -29,27 +24,31 @@ window.ADMUSE_CONTENT = {
   nav: [
     { label: "Work", href: "#work" },
     { label: "Services", href: "#services" },
-    { label: "How It Works", href: "#how-it-works" },
-    { label: "Pricing", href: "#pricing" },
-    { label: "About", href: "#about" }
+    { label: "Process", href: "#process" },
+    { label: "FAQ", href: "#faq" }
   ],
 
   navCta: {
-    label: "Start a Project →",
+    label: "Start a Project",
     href: "mailto:auto.mate0313@gmail.com"
   },
 
+  navCtaSecondary: {
+    label: "IG DM",
+    href: "https://instagram.com/admusebyruby"
+  },
+
   hero: {
+    badge: "Premium creative · AI-assisted production",
     eyebrow: "Premium creative · AI-assisted production",
     headline: "AI-Powered UGC Ads That Sell.",
     subhead:
-      "Create scroll-stopping UGC videos, product ads, and social creatives without expensive photoshoots or traditional production.",
+      "Scroll-stopping UGC videos, product ads, and social creatives — without expensive photoshoots or traditional production overhead.",
     ctaPrimary: {
-      label: "Start a Project →",
+      label: "Start a Project",
       href: "mailto:auto.mate0313@gmail.com"
     },
-    ctaSecondary: { label: "View Our Work →", href: "#work" },
-    /* Unused legacy fields — kept so older content.js forks stay valid */
+    ctaSecondary: { label: "View Work", href: "#work" },
     frameLabel: "UGC · 9:16",
     frameHint: "Your next ad lives here",
     popImage: "images/hero-pop.png"
@@ -62,14 +61,6 @@ window.ADMUSE_CONTENT = {
     "Social Creatives",
     "Video Ads"
   ],
-
-  intro: {
-    eyebrow: "The shift",
-    title: "Your product deserves more than another static ad.",
-    body:
-      "Feeds move fast. Attention is scarce. Brands that win show up with native-feeling UGC, product-led motion, and social creatives built for the scroll — not leftover campaign leftovers. Admuse AI blends modern AI production with premium creative direction so you can ship more concepts, faster, without booking a full shoot every time.",
-    cta: { label: "Explore Our Services →", href: "#services" }
-  },
 
   services: {
     eyebrow: "Services",
@@ -109,18 +100,18 @@ window.ADMUSE_CONTENT = {
   },
 
   work: {
-    eyebrow: "Work",
+    eyebrow: "Featured work",
     title: "Built for the Feed.",
     intro:
-      "Selected concepts and production styles. Media slots update as new samples are ready."
+      "Real production samples — honest titles, real files. No invented metrics or brand logos."
   },
 
   projects: [
     {
-      id: "billboard-throw",
-      title: "Billboard product throw",
+      id: "video-one",
+      title: "Product motion study",
       description:
-        "Dynamic product toss against a soft urban billboard — kinetic, branded, scroll-stopping.",
+        "Clean product-led motion with soft light and feed-ready framing — built to hold attention in a vertical scroll.",
       aspect: "9 / 16",
       mediaLabel: "Sample coming soon",
       video: "videos/video-one.mp4.mp4",
@@ -129,7 +120,7 @@ window.ADMUSE_CONTENT = {
       tags: ["Vertical", "Product"]
     },
     {
-      id: "prime-steak",
+      id: "video-two",
       title: "Menu pop concept",
       description:
         "Menu items that bloom into frame with warm light and appetite-forward pacing.",
@@ -139,45 +130,45 @@ window.ADMUSE_CONTENT = {
       poster: null,
       externalUrl: null,
       tags: ["Food", "Square"]
-    },    {
+    },
+    {
       id: "floating-drink",
-      title: "Floating drink UGC",
+      title: "Floating drink",
       description:
-        "Sidewalk fisheye hook — she spots a floating iced drink, grabs it, and the product sells itself.",
+        "Kinetic beverage moment with soft ruby grade — product-first, lifestyle energy, scroll-stopping motion.",
       aspect: "9 / 16",
       mediaLabel: "Sample coming soon",
       video: "videos/video-three.mp4.mp4",
       poster: null,
       externalUrl: null,
-      tags: ["Vertical", "UGC", "Beverage"]
-    },
-
+      tags: ["Vertical", "Lifestyle"]
+    }
   ],
 
   process: {
-    eyebrow: "Process",
+    eyebrow: "How it works",
     title: "From Product to Ad",
     intro: "A clear path from what you sell to what the feed sees.",
     steps: [
       {
         num: "01",
-        title: "Product intake",
-        body: "Share your product, brand refs, offer, and platforms. We lock creative direction early."
+        title: "Brief",
+        body: "Share your product, brand refs, offer, and platforms. Email or Instagram works."
       },
       {
         num: "02",
-        title: "Concept & direction",
-        body: "We propose angles, formats, and UGC styles that fit your category — no wasted shoots."
+        title: "Direction",
+        body: "We lock creative angles, formats, and UGC styles that fit your category — no wasted shoots."
       },
       {
         num: "03",
-        title: "AI-assisted production",
-        body: "Generate, refine, and edit stills and video into feed-ready creatives."
+        title: "Produce",
+        body: "AI-assisted production under human creative direction — generate, refine, and polish."
       },
       {
         num: "04",
-        title: "Delivery & iteration",
-        body: "You get export-ready assets plus room to iterate on winners for the next flight."
+        title: "Deliver",
+        body: "Platform-ready exports plus room to iterate on winners for the next flight."
       }
     ]
   },
@@ -212,134 +203,6 @@ window.ADMUSE_CONTENT = {
     ]
   },
 
-  directions: {
-    eyebrow: "Creative range",
-    title: "One Product. Endless Creative Possibilities.",
-    intro:
-      "The same SKU can live as UGC, product hero, lifestyle still, or motion ad — different jobs, one brand system.",
-    items: [
-      { title: "Creator UGC", body: "Handheld energy, talking-to-camera feel, native captions." },
-      { title: "Product hero", body: "Clean light, sharp detail, offer-forward framing." },
-      { title: "Lifestyle set", body: "Context, mood, and desire without a full location shoot." },
-      { title: "Motion ad", body: "Short cuts, hooks, and end-card clarity for paid social." },
-      { title: "Static social", body: "Thumb-stopping frames for feeds and Stories." },
-      { title: "Launch pack", body: "A coordinated set for drop day across platforms." }
-    ]
-  },
-
-  howItWorks: {
-    eyebrow: "How it works",
-    title: "How It Works",
-    intro: "Four steps from first message to assets in your ad account.",
-    steps: [
-      {
-        num: "01",
-        title: "Brief",
-        body: "Tell us about the product, audience, and goal. Email or Instagram works."
-      },
-      {
-        num: "02",
-        title: "Scope",
-        body: "We align on formats, quantity, timeline, and package — Starter, Growth, or Custom."
-      },
-      {
-        num: "03",
-        title: "Create",
-        body: "Direction, production, and polish. You review; we refine."
-      },
-      {
-        num: "04",
-        title: "Ship",
-        body: "Receive platform-ready files plus guidance on how to cut and test."
-      }
-    ],
-    cta: {
-      label: "Start a Project →",
-      href: "mailto:auto.mate0313@gmail.com"
-    }
-  },
-
-  whoWeServe: {
-    eyebrow: "Who we serve",
-    title: "Who We Serve",
-    intro: "Built for brands that need social-first creative — not a bloated production calendar.",
-    tags: [
-      "Beauty & skincare",
-      "Fashion & accessories",
-      "Food & beverage",
-      "CPG & lifestyle",
-      "DTC / ecom",
-      "Wellness",
-      "Home & living",
-      "Startups & launches"
-    ]
-  },
-
-  platforms: {
-    eyebrow: "Made for the scroll",
-    title: "Made for the Scroll",
-    intro:
-      "Creatives shaped for the platforms your audience already scrolls — we do not claim official partnerships.",
-    items: [
-      { name: "TikTok", note: "Vertical UGC & hooks" },
-      { name: "Instagram", note: "Reels, Stories, feed" },
-      { name: "Meta Ads", note: "Paid social formats" },
-      { name: "YouTube Shorts", note: "Short-form motion" },
-      { name: "Pinterest", note: "Visual discovery stills" },
-      { name: "Shopify / ecom", note: "PDP & launch assets" }
-    ]
-  },
-
-  pricing: {
-    eyebrow: "Pricing",
-    title: "Pricing",
-    intro:
-      "Packages scale with volume and complexity. Exact quotes depend on scope — amounts below are editable placeholders until Jay sets them.",
-    note: "Prices are placeholders. Edit content.js → pricing.tiers[].price",
-    tiers: [
-      {
-        id: "starter",
-        name: "STARTER",
-        price: "Contact for quote",
-        blurb: "A focused set to test one product or offer.",
-        features: [
-          "Core UGC or product ad concepts",
-          "Limited asset pack",
-          "One revision round",
-          "Platform-ready exports"
-        ],
-        cta: { label: "Inquire →", href: "mailto:auto.mate0313@gmail.com?subject=Starter%20package" }
-      },
-      {
-        id: "growth",
-        name: "GROWTH",
-        price: "Contact for quote",
-        featured: true,
-        blurb: "More concepts and variations for always-on testing.",
-        features: [
-          "Expanded creative directions",
-          "UGC + product + social mix",
-          "Multiple revision rounds",
-          "Priority turnaround"
-        ],
-        cta: { label: "Inquire →", href: "mailto:auto.mate0313@gmail.com?subject=Growth%20package" }
-      },
-      {
-        id: "custom",
-        name: "CUSTOM",
-        price: "—",
-        blurb: "Launch systems, retainers, or multi-SKU campaigns.",
-        features: [
-          "Bespoke scope & timeline",
-          "Brand system & packs",
-          "Ongoing creative support",
-          "Direct creative partnership"
-        ],
-        cta: { label: "Talk to us →", href: "mailto:auto.mate0313@gmail.com?subject=Custom%20project" }
-      }
-    ]
-  },
-
   faq: {
     eyebrow: "FAQ",
     title: "Frequently asked questions",
@@ -354,11 +217,11 @@ window.ADMUSE_CONTENT = {
       },
       {
         q: "What do you need from us to start?",
-        a: "Product details or samples refs, brand guidelines or mood refs, target platforms, and your offer or CTA. A short brief on Instagram or email is enough to begin."
+        a: "Product details or sample refs, brand guidelines or mood refs, target platforms, and your offer or CTA. A short brief on Instagram or email is enough to begin."
       },
       {
         q: "How long does a project take?",
-        a: "Timelines depend on scope and package. Starter packs move faster; multi-asset Growth and Custom work need more review cycles. We’ll confirm dates when we scope."
+        a: "Timelines depend on scope. Focused packs move faster; multi-asset work needs more review cycles. We’ll confirm dates when we scope."
       },
       {
         q: "Can you match our existing brand look?",
@@ -371,20 +234,13 @@ window.ADMUSE_CONTENT = {
     ]
   },
 
-  about: {
-    eyebrow: "About",
-    title: "A creative agency for social-first brands.",
-    body:
-      "Admuse AI is a premium creative practice: modern AI production with editorial taste. We help brands ship UGC, product ads, and social creatives that feel intentional — without the overhead of traditional production for every concept."
-  },
-
   finalCta: {
     eyebrow: "Next step",
     title: "Ready when your product is.",
     body:
-      "Tell us what you’re launching. We’ll reply with a clear next step — no pressure pitch deck.",
+      "Tell us what you’re launching. Reach us on Instagram @admusebyruby or email — we’ll reply with a clear next step.",
     ctaPrimary: {
-      label: "Start a Project →",
+      label: "Email Us",
       href: "mailto:auto.mate0313@gmail.com"
     },
     ctaSecondary: {
@@ -405,12 +261,12 @@ window.ADMUSE_CONTENT = {
   },
 
   footer: {
-    note: "© 2026 Admuse AI",
+    note: "© 2026 Admuse AI · Soft ruby creative",
     links: [
       { label: "Work", href: "#work" },
       { label: "Services", href: "#services" },
-      { label: "Pricing", href: "#pricing" },
-      { label: "About", href: "#about" },
+      { label: "Process", href: "#process" },
+      { label: "FAQ", href: "#faq" },
       { label: "Privacy", href: "privacy/" },
       { label: "Terms", href: "terms/" }
     ]

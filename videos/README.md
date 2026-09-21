@@ -1,32 +1,24 @@
 # Videos folder
 
-Drop project MP4s here, then point to them from `content.js`.
+Keep this folder on GitHub with the project MP4s. Site zips ship **without** large `.mp4` files.
 
-## How to add a video
+## Expected files (wired in `content.js`)
 
-1. Put an MP4 in this folder, e.g. `billboard.mp4`.
-2. Open `content.js` and find the matching project under `projects`.
-3. Set the path:
+| File | Project |
+|------|---------|
+| `video-one.mp4.mp4` | Product motion study |
+| `video-two.mp4.mp4` | Menu pop concept |
+| `video-three.mp4.mp4` | Floating drink |
 
-```js
-{
-  id: "billboard-throw",
-  title: "Billboard product throw",
-  // ...
-  video: "videos/billboard.mp4",   // relative path from site root
-  poster: "videos/billboard.jpg",  // optional still frame
-  externalUrl: null                // or a Drive / unlisted URL
-}
-```
+## How to add / replace a video
 
-4. Save and refresh. The Work grid renders an HTML5 player with controls.
+1. Put an MP4 in this folder.
+2. Open `content.js` → `projects`.
+3. Set `video: "videos/your-file.mp4"`.
+4. Save and refresh.
 
-## Size tips (GitHub + Vercel)
+## Size tips
 
-- Keep each MP4 under **~50–80 MB** so GitHub pushes stay reliable.
-- Prefer H.264 + AAC in an `.mp4` container.
-- For larger files, host elsewhere and set `externalUrl` (card shows “Watch externally →”).
-
-## Empty media
-
-When `video` is `null`, cards show a client-facing **Sample coming soon** placeholder (no developer instructions on the public site).
+- Keep each MP4 under ~50–80 MB when possible.
+- Prefer H.264 + AAC in `.mp4`.
+- For larger files, host elsewhere and set `externalUrl`.
