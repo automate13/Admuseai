@@ -114,7 +114,7 @@ window.ADMUSE_CONTENT = {
         "Clean product-led motion with soft light and feed-ready framing — built to hold attention in a vertical scroll.",
       aspect: "9 / 16",
       mediaLabel: "Sample coming soon",
-      video: "videos/video-one.mp4.mp4",
+      video: "videos/video-one.mp4.mp4?v=2"
       poster: null,
       externalUrl: null,
       tags: ["Vertical", "Product"]
