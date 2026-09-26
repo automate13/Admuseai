@@ -1468,6 +1468,14 @@ h3 {
   }
 }
 
+/* ── Anime.js takes over reveal motion when loaded ── */
+html.js-anime .reveal {
+  opacity: 1;
+  transform: none;
+  transition: none;
+  will-change: auto;
+}
+
 /* ── Scroll reveal ── */
 .reveal {
   opacity: 0;

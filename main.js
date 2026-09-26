@@ -959,6 +959,54 @@
     }
   }
 
+  function animeApi() {
+    var lib = window.anime;
+    if (!lib || typeof lib.animate !== "function") return null;
+    return lib;
+  }
+
+  function setupHeroAnime() {
+    if (prefersReducedMotion()) return;
+    var api = animeApi();
+    if (!api) return;
+
+    var els = document.querySelectorAll(
+      ".hero-copy .hero-badge, .hero-copy .hero-title, .hero-copy .lede, .hero-copy .hero-actions"
+    );
+    if (!els.length) return;
+
+    document.documentElement.classList.add("js-anime");
+    api.set(els, { opacity: 0, y: 28 });
+    api.animate(els, {
+      opacity: [0, 1],
+      y: [28, 0],
+      delay: api.stagger(95),
+      duration: 880,
+      ease: "out(3)"
+    });
+  }
+
+  function setupScrollRevealCssFallback(nodes) {
+    nodes.forEach(function (el) {
+      el.classList.add("reveal");
+    });
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-inview");
+          observer.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -6% 0px", threshold: 0.12 }
+    );
+
+    nodes.forEach(function (el) {
+      observer.observe(el);
+    });
+  }
+
   function setupScrollReveal() {
     if (prefersReducedMotion() || !("IntersectionObserver" in window)) return;
 
@@ -984,23 +1032,90 @@
     var nodes = Array.prototype.slice.call(document.querySelectorAll(selector));
     if (!nodes.length) return;
 
-    nodes.forEach(function (el) {
-      el.classList.add("reveal");
+    var api = animeApi();
+    if (!api) {
+      setupScrollRevealCssFallback(nodes);
+      return;
+    }
+
+    document.documentElement.classList.add("js-anime");
+
+    var groups = [
+      ".service-grid",
+      ".project-grid",
+      ".process-grid",
+      ".how-grid",
+      ".directions-grid",
+      ".platform-grid",
+      ".pricing-grid",
+      ".compare-grid"
+    ];
+
+    var animated = new WeakSet();
+
+    function playTargets(targets) {
+      var list = Array.prototype.slice.call(targets).filter(function (el) {
+        if (animated.has(el)) return false;
+        animated.add(el);
+        return true;
+      });
+      if (!list.length) return;
+      api.set(list, { opacity: 0, y: 26 });
+      api.animate(list, {
+        opacity: [0, 1],
+        y: [26, 0],
+        delay: api.stagger(70),
+        duration: 720,
+        ease: "out(3)"
+      });
+    }
+
+    /* Stagger card grids as a group when the grid enters view */
+    groups.forEach(function (sel) {
+      var grid = document.querySelector(sel);
+      if (!grid) return;
+      var kids = grid.querySelectorAll(
+        ".service-card, .project-card, .process-step, .how-step, .direction-card, .platform-card, .pricing-card, .compare-card"
+      );
+      if (!kids.length) return;
+      api.set(kids, { opacity: 0, y: 26 });
+      var obs = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            playTargets(kids);
+            obs.unobserve(entry.target);
+          });
+        },
+        { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+      );
+      obs.observe(grid);
     });
 
-    var observer = new IntersectionObserver(
+    /* Everything else: one-shot Anime.js reveal */
+    var lone = nodes.filter(function (el) {
+      return !el.closest(
+        ".service-grid, .project-grid, .process-grid, .how-grid, .directions-grid, .platform-grid, .pricing-grid, .compare-grid"
+      );
+    });
+
+    lone.forEach(function (el) {
+      api.set(el, { opacity: 0, y: 22 });
+    });
+
+    var loneObs = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-inview");
-          observer.unobserve(entry.target);
+          playTargets([entry.target]);
+          loneObs.unobserve(entry.target);
         });
       },
       { rootMargin: "0px 0px -6% 0px", threshold: 0.12 }
     );
 
-    nodes.forEach(function (el) {
-      observer.observe(el);
+    lone.forEach(function (el) {
+      loneObs.observe(el);
     });
   }
 
@@ -1126,6 +1241,7 @@
   setupActiveNav();
   setupParallax();
   setupHeroParticles();
+  setupHeroAnime();
   setupScrollReveal();
   setupCursorGlow();
 })();
