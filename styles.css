@@ -538,25 +538,45 @@ h3 {
   }
 }
 
-/* ── Hero — typography + atmospheric light field (no device) ── */
+/* ── Hero — StyleHub layered board (wallpaper + copy + figure) ── */
 .hero {
   position: relative;
-  padding-top: clamp(5.5rem, 10vw, 7rem);
-  padding-bottom: clamp(3.5rem, 8vw, 5.5rem);
+  padding-top: clamp(5.25rem, 9vw, 6.5rem);
+  padding-bottom: clamp(2.75rem, 6vw, 4.5rem);
   overflow: hidden;
   isolation: isolate;
-  min-height: min(82vh, 760px);
+  min-height: min(88vh, 820px);
   display: flex;
-  align-items: center;
+  align-items: stretch;
   background: #0c0a0b;
 }
 
 .hero-board {
-  /* charcoal stage for the split board */
+  background: transparent;
+}
+
+/* Atmospheric wallpaper / architectural depth */
+.hero-wallpaper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
   background:
-    radial-gradient(ellipse 55% 50% at 18% 45%, rgba(199, 91, 120, 0.08), transparent 60%),
-    radial-gradient(ellipse 40% 40% at 88% 30%, rgba(232, 237, 242, 0.04), transparent 55%),
-    #100d0f;
+    radial-gradient(ellipse 70% 55% at 72% 38%, rgba(80, 72, 78, 0.35), transparent 62%),
+    radial-gradient(ellipse 55% 50% at 18% 48%, rgba(199, 91, 120, 0.1), transparent 58%),
+    radial-gradient(ellipse 40% 36% at 92% 18%, rgba(232, 237, 242, 0.05), transparent 55%),
+    linear-gradient(118deg, #0a0809 0%, #141012 42%, #1a1618 68%, #0e0c0d 100%);
+}
+
+.hero-wallpaper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(8, 6, 7, 0.72) 0%, rgba(8, 6, 7, 0.45) 38%, rgba(8, 6, 7, 0.08) 62%, transparent 78%),
+    linear-gradient(180deg, rgba(12, 10, 11, 0.15) 0%, transparent 35%, rgba(12, 10, 11, 0.55) 100%);
+  z-index: 1;
 }
 
 .hero-particles {
@@ -565,15 +585,15 @@ h3 {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 0;
-  opacity: 0.55;
+  z-index: 2;
+  opacity: 0.45;
 }
 
-/* Soft ruby light field behind copy */
+/* Soft ruby light field */
 .hero-haze {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 2;
   pointer-events: none;
   overflow: hidden;
 }
@@ -583,10 +603,9 @@ h3 {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 70% 55% at 28% 42%, rgba(199, 91, 120, 0.07), transparent 64%),
-    radial-gradient(ellipse 45% 40% at 12% 70%, rgba(199, 91, 120, 0.05), transparent 58%),
-    radial-gradient(ellipse 40% 35% at 92% 28%, rgba(232, 237, 242, 0.03), transparent 55%),
-    linear-gradient(180deg, rgba(12, 10, 11, 0) 0%, rgba(12, 10, 11, 0.45) 100%);
+    radial-gradient(ellipse 70% 55% at 28% 42%, rgba(199, 91, 120, 0.08), transparent 64%),
+    radial-gradient(ellipse 45% 40% at 12% 70%, rgba(199, 91, 120, 0.06), transparent 58%),
+    radial-gradient(ellipse 40% 35% at 92% 28%, rgba(232, 237, 242, 0.035), transparent 55%);
 }
 
 .hero-haze-orb {
@@ -651,34 +670,49 @@ h3 {
 
 .hero-inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
-  display: block;
+  display: flex;
+  align-items: stretch;
 }
 
-/* Split board shell */
+/* Single layered board — no image card / no carousel */
 .hero-board-panel {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: clamp(1.5rem, 4vw, 3rem);
-  align-items: center;
-  background: linear-gradient(145deg, #161214 0%, #100d0f 55%, #0e0b0c 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 28px;
-  padding: clamp(1.75rem, 4vw, 3rem);
-  box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-  overflow: hidden;
-  min-height: min(62vh, 560px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+  align-items: end;
+  width: 100%;
+  min-height: min(72vh, 640px);
+  padding: clamp(1.5rem, 3.5vw, 2.75rem) 0 clamp(0.5rem, 1.5vw, 1rem);
+  overflow: visible;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .hero-copy {
+  position: relative;
+  z-index: 3;
   max-width: 34rem;
   margin: 0;
+  padding: clamp(1.5rem, 4vw, 3.25rem) 0;
   text-align: left;
-  position: relative;
-  z-index: 2;
+  align-self: center;
+}
+
+/* Soft veil so copy stays readable when figure overlaps */
+.hero-copy::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -8% -12% -8% -18%;
+  background:
+    radial-gradient(ellipse 80% 70% at 30% 45%, rgba(10, 8, 9, 0.78) 0%, rgba(10, 8, 9, 0.42) 55%, transparent 78%),
+    linear-gradient(90deg, rgba(10, 8, 9, 0.65) 0%, rgba(10, 8, 9, 0.28) 70%, transparent 100%);
+  pointer-events: none;
+  filter: blur(2px);
 }
 
 .hero-title {
@@ -713,102 +747,31 @@ h3 {
   justify-content: flex-start;
 }
 
-/* Right: lookbook carousel */
-.hero-visual {
+/* Figure cutout overlaid on wallpaper — can bleed left into copy */
+.hero-figure {
   position: relative;
-  min-width: 0;
-}
-
-.hero-carousel {
-  position: relative;
-  border-radius: 22px;
-  overflow: hidden;
-  background: #1a1518;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  aspect-ratio: 4 / 5;
-  max-height: min(560px, 68vh);
-  margin-inline: auto;
-  width: 100%;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
-}
-
-.hero-carousel-viewport {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-
-.hero-carousel-track {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.hero-slide {
-  position: absolute;
-  inset: 0;
-  margin: 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.7s ease, visibility 0.7s ease;
-  z-index: 1;
-}
-
-.hero-slide.is-active {
-  opacity: 1;
-  visibility: visible;
   z-index: 2;
+  margin: 0;
+  justify-self: end;
+  align-self: end;
+  width: min(100%, 420px);
+  max-width: none;
+  height: min(68vh, 620px);
+  pointer-events: none;
+  /* slight left bleed into text column */
+  margin-right: -2%;
+  margin-left: -12%;
+  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.45));
 }
 
-.hero-slide img {
+.hero-figure img {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 18%;
+  object-fit: contain;
+  object-position: bottom right;
   user-select: none;
-  pointer-events: none;
-}
-
-.hero-carousel-dots {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0.85rem;
-  z-index: 5;
-  display: flex;
-  justify-content: center;
-  gap: 0.45rem;
-  pointer-events: none;
-}
-
-.hero-dot {
-  pointer-events: auto;
-  width: 0.55rem;
-  height: 0.55rem;
-  padding: 0;
-  border: 0;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.38);
-  cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease, width 0.2s ease;
-}
-
-.hero-dot.is-active {
-  background: var(--accent);
-  width: 1.35rem;
-  box-shadow: 0 0 0 3px rgba(199, 91, 120, 0.22);
-}
-
-.hero-dot:focus-visible {
-  outline: 2px solid var(--accent-soft);
-  outline-offset: 3px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-slide {
-    transition: none;
-  }
+  -webkit-user-drag: none;
 }
 
 /* ── Value strip / soft white content sheet under hero ── */
@@ -1471,31 +1434,38 @@ h3 {
 /* ── Responsive ── */
 @media (max-width: 960px) {
   .hero {
-    min-height: auto;
+    min-height: min(78vh, 680px);
     padding-top: 4.25rem;
-    padding-bottom: 3.25rem;
+    padding-bottom: 2.5rem;
   }
 
   .hero-board-panel {
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
-    min-height: 0;
-    padding: 1.5rem;
+    /* Keep StyleHub layered side-by-side; figure overlays right */
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 0;
+    min-height: min(58vh, 520px);
+    padding: 1rem 0 0;
+    align-items: end;
   }
 
   .hero-copy {
     max-width: none;
     text-align: left;
+    z-index: 4;
+    padding: 1.25rem 0 1.5rem;
   }
 
   .hero-title {
-    font-size: clamp(2.2rem, 8vw, 3.1rem);
-    max-width: none;
+    font-size: clamp(2.05rem, 7vw, 3rem);
+    max-width: 11ch;
   }
 
-  .hero-carousel {
-    max-height: min(480px, 58vh);
-    aspect-ratio: 3 / 4;
+  .hero-figure {
+    width: min(100%, 340px);
+    height: min(56vh, 480px);
+    margin-left: -22%;
+    margin-right: -4%;
+    justify-self: end;
   }
 
   .content-sheet,
@@ -1875,17 +1845,36 @@ html.js-anime .reveal {
 
 
 @media (max-width: 720px) {
+  .hero {
+    min-height: min(72vh, 620px);
+  }
+
   .hero-board-panel {
-    border-radius: 20px;
-    padding: 1.25rem;
+    padding: 0.35rem 0 0;
+    min-height: min(52vh, 460px);
   }
 
   .hero-actions {
     justify-content: flex-start;
   }
 
-  .hero-carousel {
-    border-radius: 16px;
+  .hero-figure {
+    width: min(100%, 260px);
+    height: min(50vh, 400px);
+    margin-left: -28%;
+    margin-right: -6%;
+  }
+
+  .hero-copy {
+    padding-bottom: 2rem;
+  }
+
+  .hero-copy::before {
+    inset: -6% -8% -6% -10%;
+  }
+
+  .hero-title {
+    font-size: clamp(1.9rem, 8.5vw, 2.6rem);
   }
 }
 
