@@ -538,45 +538,16 @@ h3 {
   }
 }
 
-/* ── Hero — StyleHub layered board (wallpaper + copy + figure) ── */
+/* ── Hero — typography + atmospheric light field (no device) ── */
 .hero {
   position: relative;
-  padding-top: clamp(5.25rem, 9vw, 6.5rem);
-  padding-bottom: clamp(2.75rem, 6vw, 4.5rem);
+  padding-top: clamp(4.5rem, 12vw, 7.5rem);
+  padding-bottom: clamp(4rem, 10vw, 6.5rem);
   overflow: hidden;
   isolation: isolate;
-  min-height: min(88vh, 820px);
+  min-height: min(78vh, 720px);
   display: flex;
-  align-items: stretch;
-  background: #0c0a0b;
-}
-
-.hero-board {
-  background: transparent;
-}
-
-/* Atmospheric wallpaper / architectural depth */
-.hero-wallpaper {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-  background:
-    radial-gradient(ellipse 70% 55% at 72% 38%, rgba(80, 72, 78, 0.35), transparent 62%),
-    radial-gradient(ellipse 55% 50% at 18% 48%, rgba(199, 91, 120, 0.1), transparent 58%),
-    radial-gradient(ellipse 40% 36% at 92% 18%, rgba(232, 237, 242, 0.05), transparent 55%),
-    linear-gradient(118deg, #0a0809 0%, #141012 42%, #1a1618 68%, #0e0c0d 100%);
-}
-
-.hero-wallpaper::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg, rgba(8, 6, 7, 0.72) 0%, rgba(8, 6, 7, 0.45) 38%, rgba(8, 6, 7, 0.08) 62%, transparent 78%),
-    linear-gradient(180deg, rgba(12, 10, 11, 0.15) 0%, transparent 35%, rgba(12, 10, 11, 0.55) 100%);
-  z-index: 1;
+  align-items: center;
 }
 
 .hero-particles {
@@ -585,15 +556,15 @@ h3 {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 2;
-  opacity: 0.45;
+  z-index: 0;
+  opacity: 0.9;
 }
 
-/* Soft ruby light field */
+/* Soft ruby light field behind copy */
 .hero-haze {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 0;
   pointer-events: none;
   overflow: hidden;
 }
@@ -603,9 +574,10 @@ h3 {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 70% 55% at 28% 42%, rgba(199, 91, 120, 0.08), transparent 64%),
-    radial-gradient(ellipse 45% 40% at 12% 70%, rgba(199, 91, 120, 0.06), transparent 58%),
-    radial-gradient(ellipse 40% 35% at 92% 28%, rgba(232, 237, 242, 0.035), transparent 55%);
+    radial-gradient(ellipse 70% 55% at 50% 42%, rgba(199, 91, 120, 0.05), transparent 64%),
+    radial-gradient(ellipse 45% 40% at 18% 70%, rgba(199, 91, 120, 0.04), transparent 58%),
+    radial-gradient(ellipse 40% 35% at 88% 28%, rgba(232, 237, 242, 0.035), transparent 55%),
+    linear-gradient(180deg, rgba(12, 10, 11, 0) 0%, rgba(12, 10, 11, 0.35) 100%);
 }
 
 .hero-haze-orb {
@@ -620,9 +592,9 @@ h3 {
   width: min(520px, 70vw);
   height: min(520px, 70vw);
   top: 8%;
-  left: 28%;
+  left: 50%;
   transform: translateX(-52%);
-  background: radial-gradient(circle, rgba(199, 91, 120, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(199, 91, 120, 0.11) 0%, transparent 70%);
 }
 
 .hero-haze-orb-b {
@@ -630,7 +602,7 @@ h3 {
   height: min(340px, 50vw);
   bottom: 6%;
   left: 8%;
-  background: radial-gradient(circle, rgba(224, 130, 180, 0.07) 0%, transparent 72%);
+  background: radial-gradient(circle, rgba(224, 130, 180, 0.06) 0%, transparent 72%);
 }
 
 .hero-haze-orb-c {
@@ -638,7 +610,7 @@ h3 {
   height: min(280px, 42vw);
   top: 18%;
   right: 6%;
-  background: radial-gradient(circle, rgba(232, 237, 242, 0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(232, 237, 242, 0.06) 0%, transparent 70%);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -670,68 +642,34 @@ h3 {
 
 .hero-inner {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   width: 100%;
-  display: flex;
-  align-items: stretch;
-}
-
-/* Single layered board — no image card / no carousel */
-.hero-board-panel {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
-  align-items: end;
-  width: 100%;
-  min-height: min(72vh, 640px);
-  padding: clamp(1.5rem, 3.5vw, 2.75rem) 0 clamp(0.5rem, 1.5vw, 1rem);
-  overflow: visible;
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
+  display: block;
 }
 
 .hero-copy {
-  position: relative;
-  z-index: 3;
-  max-width: 34rem;
-  margin: 0;
-  padding: clamp(1.5rem, 4vw, 3.25rem) 0;
-  text-align: left;
-  align-self: center;
-}
-
-/* Soft veil so copy stays readable when figure overlaps */
-.hero-copy::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: -8% -12% -8% -18%;
-  background:
-    radial-gradient(ellipse 80% 70% at 30% 45%, rgba(10, 8, 9, 0.78) 0%, rgba(10, 8, 9, 0.42) 55%, transparent 78%),
-    linear-gradient(90deg, rgba(10, 8, 9, 0.65) 0%, rgba(10, 8, 9, 0.28) 70%, transparent 100%);
-  pointer-events: none;
-  filter: blur(2px);
+  max-width: 38rem;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .hero-title {
-  font-size: clamp(2.35rem, 5.2vw, 3.85rem);
+  font-size: clamp(2.6rem, 6.2vw, 4.25rem);
   font-weight: 800;
   line-height: 1.02;
   letter-spacing: -0.035em;
-  margin-bottom: 1.15rem;
-  max-width: 12ch;
+  margin-bottom: 1.35rem;
+  max-width: none;
   color: #fff;
   text-wrap: balance;
 }
 
 .hero-copy .lede {
-  margin-left: 0;
-  margin-right: 0;
-  max-width: 38ch;
-  margin-bottom: 1.85rem;
-  font-size: clamp(1rem, 1.6vw, 1.125rem);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 36ch;
+  margin-bottom: 2.15rem;
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
   color: var(--muted);
 }
 
@@ -744,48 +682,16 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
-/* Figure cutout overlaid on wallpaper — can bleed left into copy */
-.hero-figure {
-  position: relative;
-  z-index: 2;
-  margin: 0;
-  justify-self: end;
-  align-self: end;
-  width: min(100%, 420px);
-  max-width: none;
-  height: min(68vh, 620px);
-  pointer-events: none;
-  /* slight left bleed into text column */
-  margin-right: -2%;
-  margin-left: -12%;
-  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.45));
-}
-
-.hero-figure img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: bottom right;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-/* ── Value strip / soft white content sheet under hero ── */
-.value-strip,
-.content-sheet {
+/* ── Value strip ── */
+.value-strip {
   position: relative;
   z-index: 10;
-  border-block: 1px solid rgba(199, 91, 120, 0.08);
-  background: #f7f1f3;
-  padding: 1.35rem 0 1.25rem;
-  margin-top: -2.25rem;
-  border-radius: 28px 28px 0 0;
-  box-shadow: 0 -24px 60px rgba(0, 0, 0, 0.28);
-  color: #2a2226;
+  border-block: 1px solid var(--border);
+  background: var(--bg-elevated);
+  padding: 1.1rem 0;
 }
 
 .value-strip-inner {
@@ -801,19 +707,14 @@ h3 {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #3a3035;
+  color: var(--text);
   padding: 0.25rem 0.65rem;
 }
 
 .value-sep {
   color: var(--accent);
-  opacity: 0.7;
+  opacity: 0.5;
   font-size: 0.75rem;
-}
-
-/* Work resumes dark below the light sheet bridge */
-.work.section {
-  border-top: 0;
 }
 
 /* ── Intro ── */
@@ -1434,44 +1335,13 @@ h3 {
 /* ── Responsive ── */
 @media (max-width: 960px) {
   .hero {
-    min-height: min(78vh, 680px);
-    padding-top: 4.25rem;
-    padding-bottom: 2.5rem;
-  }
-
-  .hero-board-panel {
-    /* Keep StyleHub layered side-by-side; figure overlays right */
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-    gap: 0;
-    min-height: min(58vh, 520px);
-    padding: 1rem 0 0;
-    align-items: end;
-  }
-
-  .hero-copy {
-    max-width: none;
-    text-align: left;
-    z-index: 4;
-    padding: 1.25rem 0 1.5rem;
+    min-height: auto;
+    padding-top: 3.75rem;
+    padding-bottom: 3.5rem;
   }
 
   .hero-title {
-    font-size: clamp(2.05rem, 7vw, 3rem);
-    max-width: 11ch;
-  }
-
-  .hero-figure {
-    width: min(100%, 340px);
-    height: min(56vh, 480px);
-    margin-left: -22%;
-    margin-right: -4%;
-    justify-self: end;
-  }
-
-  .content-sheet,
-  .value-strip {
-    margin-top: -1.5rem;
-    border-radius: 22px 22px 0 0;
+    font-size: clamp(2.25rem, 8vw, 3.25rem);
   }
 
   .process-grid,
@@ -1796,11 +1666,11 @@ html.js-anime .reveal {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin: 0 0 1.15rem;
+  margin: 0 auto 1.25rem;
   padding: 0.4rem 0.95rem;
   border-radius: 999px;
   border: 1px solid rgba(224, 130, 180, 0.28);
-  background: rgba(199, 91, 120, 0.12);
+  background: rgba(199, 91, 120, 0.1);
   color: var(--accent-soft);
   font-size: 0.75rem;
   font-weight: 600;
@@ -1840,41 +1710,6 @@ html.js-anime .reveal {
 @media (max-width: 640px) {
   .project-grid {
     grid-template-columns: 1fr;
-  }
-}
-
-
-@media (max-width: 720px) {
-  .hero {
-    min-height: min(72vh, 620px);
-  }
-
-  .hero-board-panel {
-    padding: 0.35rem 0 0;
-    min-height: min(52vh, 460px);
-  }
-
-  .hero-actions {
-    justify-content: flex-start;
-  }
-
-  .hero-figure {
-    width: min(100%, 260px);
-    height: min(50vh, 400px);
-    margin-left: -28%;
-    margin-right: -6%;
-  }
-
-  .hero-copy {
-    padding-bottom: 2rem;
-  }
-
-  .hero-copy::before {
-    inset: -6% -8% -6% -10%;
-  }
-
-  .hero-title {
-    font-size: clamp(1.9rem, 8.5vw, 2.6rem);
   }
 }
 
