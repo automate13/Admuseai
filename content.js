@@ -39,11 +39,11 @@ window.ADMUSE_CONTENT = {
   },
 
   hero: {
-    badge: "Premium creative · AI-assisted production",
-    eyebrow: "Premium creative · AI-assisted production",
+    badge: "Admuse · AI UGC studio",
+    eyebrow: "Admuse · AI UGC studio",
     headline: "AI-Powered UGC Ads That Sell.",
     subhead:
-      "Scroll-stopping UGC videos, product ads, and social creatives — without expensive photoshoots or traditional production overhead.",
+      "Scroll-stopping UGC, product ads, and social creatives — premium AI production without the photoshoot overhead.",
     ctaPrimary: {
       label: "Start a Project",
       href: "mailto:auto.mate0313@gmail.com"

@@ -55,8 +55,8 @@
     </header>
 
     <main id="main">
-      <!-- Hero -->
-      <section class="hero section" id="home" aria-labelledby="hero-title">
+      <!-- Hero — StyleHub-inspired dark split board -->
+      <section class="hero section hero-board" id="home" aria-labelledby="hero-title">
         <canvas class="hero-particles" aria-hidden="true"></canvas>
         <div class="hero-haze" aria-hidden="true">
           <span class="hero-haze-orb hero-haze-orb-a"></span>
@@ -64,18 +64,69 @@
           <span class="hero-haze-orb hero-haze-orb-c"></span>
         </div>
         <div class="shell hero-inner">
-          <div class="hero-copy">
-            <p class="hero-badge" data-bind="hero.badge"></p>
-            <p class="eyebrow hero-eyebrow" data-bind="hero.eyebrow" hidden></p>
-            <h1 id="hero-title" class="hero-title" data-bind="hero.headline"></h1>
-            <p class="lede" data-bind="hero.subhead"></p>
-            <div class="hero-actions" data-bind="hero.actions"></div>
+          <div class="hero-board-panel">
+            <div class="hero-copy">
+              <p class="hero-badge" data-bind="hero.badge"></p>
+              <p class="eyebrow hero-eyebrow" data-bind="hero.eyebrow" hidden></p>
+              <h1 id="hero-title" class="hero-title" data-bind="hero.headline"></h1>
+              <p class="lede" data-bind="hero.subhead"></p>
+              <div class="hero-actions" data-bind="hero.actions"></div>
+            </div>
+            <div class="hero-visual">
+              <div
+                class="hero-carousel"
+                data-hero-carousel
+                role="region"
+                aria-roledescription="carousel"
+                aria-label="Featured lookbook"
+              >
+                <div class="hero-carousel-viewport">
+                  <div class="hero-carousel-track">
+                    <figure class="hero-slide is-active" data-slide="0" aria-hidden="false">
+                      <img
+                        src="images/hero-slide-1.jpg"
+                        alt="AI UGC look — standing full-body in pale yellow dress with olive bag"
+                        width="900"
+                        height="1124"
+                        decoding="async"
+                        fetchpriority="high"
+                      />
+                    </figure>
+                    <figure class="hero-slide" data-slide="1" aria-hidden="true">
+                      <img
+                        src="images/hero-slide-2.jpg"
+                        alt="AI UGC look — close-up holding olive Loewe-style bag"
+                        width="900"
+                        height="1180"
+                        decoding="async"
+                        loading="lazy"
+                      />
+                    </figure>
+                    <figure class="hero-slide" data-slide="2" aria-hidden="true">
+                      <img
+                        src="images/hero-slide-3.jpg"
+                        alt="AI UGC look — seated floor portrait with olive bag"
+                        width="900"
+                        height="1124"
+                        decoding="async"
+                        loading="lazy"
+                      />
+                    </figure>
+                  </div>
+                </div>
+                <div class="hero-carousel-dots" role="tablist" aria-label="Carousel slides">
+                  <button type="button" class="hero-dot is-active" role="tab" aria-selected="true" aria-label="Slide 1" data-dot="0"></button>
+                  <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-label="Slide 2" data-dot="1"></button>
+                  <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-label="Slide 3" data-dot="2"></button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Value strip -->
-      <section class="value-strip" aria-label="Capabilities">
+      <!-- Soft sheet overlapping under hero -->
+      <section class="value-strip content-sheet" aria-label="Capabilities">
         <div class="shell value-strip-inner" data-bind="valueStrip"></div>
       </section>
 

@@ -541,13 +541,22 @@ h3 {
 /* ── Hero — typography + atmospheric light field (no device) ── */
 .hero {
   position: relative;
-  padding-top: clamp(4.5rem, 12vw, 7.5rem);
-  padding-bottom: clamp(4rem, 10vw, 6.5rem);
+  padding-top: clamp(5.5rem, 10vw, 7rem);
+  padding-bottom: clamp(3.5rem, 8vw, 5.5rem);
   overflow: hidden;
   isolation: isolate;
-  min-height: min(78vh, 720px);
+  min-height: min(82vh, 760px);
   display: flex;
   align-items: center;
+  background: #0c0a0b;
+}
+
+.hero-board {
+  /* charcoal stage for the split board */
+  background:
+    radial-gradient(ellipse 55% 50% at 18% 45%, rgba(199, 91, 120, 0.08), transparent 60%),
+    radial-gradient(ellipse 40% 40% at 88% 30%, rgba(232, 237, 242, 0.04), transparent 55%),
+    #100d0f;
 }
 
 .hero-particles {
@@ -557,7 +566,7 @@ h3 {
   height: 100%;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.9;
+  opacity: 0.55;
 }
 
 /* Soft ruby light field behind copy */
@@ -574,10 +583,10 @@ h3 {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 70% 55% at 50% 42%, rgba(199, 91, 120, 0.05), transparent 64%),
-    radial-gradient(ellipse 45% 40% at 18% 70%, rgba(199, 91, 120, 0.04), transparent 58%),
-    radial-gradient(ellipse 40% 35% at 88% 28%, rgba(232, 237, 242, 0.035), transparent 55%),
-    linear-gradient(180deg, rgba(12, 10, 11, 0) 0%, rgba(12, 10, 11, 0.35) 100%);
+    radial-gradient(ellipse 70% 55% at 28% 42%, rgba(199, 91, 120, 0.07), transparent 64%),
+    radial-gradient(ellipse 45% 40% at 12% 70%, rgba(199, 91, 120, 0.05), transparent 58%),
+    radial-gradient(ellipse 40% 35% at 92% 28%, rgba(232, 237, 242, 0.03), transparent 55%),
+    linear-gradient(180deg, rgba(12, 10, 11, 0) 0%, rgba(12, 10, 11, 0.45) 100%);
 }
 
 .hero-haze-orb {
@@ -592,9 +601,9 @@ h3 {
   width: min(520px, 70vw);
   height: min(520px, 70vw);
   top: 8%;
-  left: 50%;
+  left: 28%;
   transform: translateX(-52%);
-  background: radial-gradient(circle, rgba(199, 91, 120, 0.11) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(199, 91, 120, 0.12) 0%, transparent 70%);
 }
 
 .hero-haze-orb-b {
@@ -602,7 +611,7 @@ h3 {
   height: min(340px, 50vw);
   bottom: 6%;
   left: 8%;
-  background: radial-gradient(circle, rgba(224, 130, 180, 0.06) 0%, transparent 72%);
+  background: radial-gradient(circle, rgba(224, 130, 180, 0.07) 0%, transparent 72%);
 }
 
 .hero-haze-orb-c {
@@ -610,7 +619,7 @@ h3 {
   height: min(280px, 42vw);
   top: 18%;
   right: 6%;
-  background: radial-gradient(circle, rgba(232, 237, 242, 0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(232, 237, 242, 0.05) 0%, transparent 70%);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -647,29 +656,48 @@ h3 {
   display: block;
 }
 
+/* Split board shell */
+.hero-board-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  background: linear-gradient(145deg, #161214 0%, #100d0f 55%, #0e0b0c 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: clamp(1.75rem, 4vw, 3rem);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  min-height: min(62vh, 560px);
+}
+
 .hero-copy {
-  max-width: 38rem;
-  margin: 0 auto;
-  text-align: center;
+  max-width: 34rem;
+  margin: 0;
+  text-align: left;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-title {
-  font-size: clamp(2.6rem, 6.2vw, 4.25rem);
+  font-size: clamp(2.35rem, 5.2vw, 3.85rem);
   font-weight: 800;
   line-height: 1.02;
   letter-spacing: -0.035em;
-  margin-bottom: 1.35rem;
-  max-width: none;
+  margin-bottom: 1.15rem;
+  max-width: 12ch;
   color: #fff;
   text-wrap: balance;
 }
 
 .hero-copy .lede {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 36ch;
-  margin-bottom: 2.15rem;
-  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 38ch;
+  margin-bottom: 1.85rem;
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
   color: var(--muted);
 }
 
@@ -682,16 +710,119 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
-/* ── Value strip ── */
-.value-strip {
+/* Right: lookbook carousel */
+.hero-visual {
+  position: relative;
+  min-width: 0;
+}
+
+.hero-carousel {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #1a1518;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  aspect-ratio: 4 / 5;
+  max-height: min(560px, 68vh);
+  margin-inline: auto;
+  width: 100%;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+}
+
+.hero-carousel-viewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hero-carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+  z-index: 1;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+.hero-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  user-select: none;
+  pointer-events: none;
+}
+
+.hero-carousel-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.85rem;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  gap: 0.45rem;
+  pointer-events: none;
+}
+
+.hero-dot {
+  pointer-events: auto;
+  width: 0.55rem;
+  height: 0.55rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.38);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, width 0.2s ease;
+}
+
+.hero-dot.is-active {
+  background: var(--accent);
+  width: 1.35rem;
+  box-shadow: 0 0 0 3px rgba(199, 91, 120, 0.22);
+}
+
+.hero-dot:focus-visible {
+  outline: 2px solid var(--accent-soft);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    transition: none;
+  }
+}
+
+/* ── Value strip / soft white content sheet under hero ── */
+.value-strip,
+.content-sheet {
   position: relative;
   z-index: 10;
-  border-block: 1px solid var(--border);
-  background: var(--bg-elevated);
-  padding: 1.1rem 0;
+  border-block: 1px solid rgba(199, 91, 120, 0.08);
+  background: #f7f1f3;
+  padding: 1.35rem 0 1.25rem;
+  margin-top: -2.25rem;
+  border-radius: 28px 28px 0 0;
+  box-shadow: 0 -24px 60px rgba(0, 0, 0, 0.28);
+  color: #2a2226;
 }
 
 .value-strip-inner {
@@ -707,14 +838,19 @@ h3 {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--text);
+  color: #3a3035;
   padding: 0.25rem 0.65rem;
 }
 
 .value-sep {
   color: var(--accent);
-  opacity: 0.5;
+  opacity: 0.7;
   font-size: 0.75rem;
+}
+
+/* Work resumes dark below the light sheet bridge */
+.work.section {
+  border-top: 0;
 }
 
 /* ── Intro ── */
@@ -1336,12 +1472,36 @@ h3 {
 @media (max-width: 960px) {
   .hero {
     min-height: auto;
-    padding-top: 3.75rem;
-    padding-bottom: 3.5rem;
+    padding-top: 4.25rem;
+    padding-bottom: 3.25rem;
+  }
+
+  .hero-board-panel {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    min-height: 0;
+    padding: 1.5rem;
+  }
+
+  .hero-copy {
+    max-width: none;
+    text-align: left;
   }
 
   .hero-title {
-    font-size: clamp(2.25rem, 8vw, 3.25rem);
+    font-size: clamp(2.2rem, 8vw, 3.1rem);
+    max-width: none;
+  }
+
+  .hero-carousel {
+    max-height: min(480px, 58vh);
+    aspect-ratio: 3 / 4;
+  }
+
+  .content-sheet,
+  .value-strip {
+    margin-top: -1.5rem;
+    border-radius: 22px 22px 0 0;
   }
 
   .process-grid,
@@ -1666,11 +1826,11 @@ html.js-anime .reveal {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin: 0 auto 1.25rem;
+  margin: 0 0 1.15rem;
   padding: 0.4rem 0.95rem;
   border-radius: 999px;
   border: 1px solid rgba(224, 130, 180, 0.28);
-  background: rgba(199, 91, 120, 0.1);
+  background: rgba(199, 91, 120, 0.12);
   color: var(--accent-soft);
   font-size: 0.75rem;
   font-weight: 600;
@@ -1710,6 +1870,22 @@ html.js-anime .reveal {
 @media (max-width: 640px) {
   .project-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+
+@media (max-width: 720px) {
+  .hero-board-panel {
+    border-radius: 20px;
+    padding: 1.25rem;
+  }
+
+  .hero-actions {
+    justify-content: flex-start;
+  }
+
+  .hero-carousel {
+    border-radius: 16px;
   }
 }
 
