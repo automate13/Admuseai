@@ -2,7 +2,8 @@
  * Admuse AI — single source of truth for copy & projects.
  * Edit this file, save, refresh. No build step.
  *
- * Soft ruby Stitch-style landing — no pricing, no fake metrics.
+ * Soft ruby dark landing — AI creative agency.
+ * No pricing, no fake metrics / ROAS / views.
  *
  * Projects support optional media fields:
  *   video:       "videos/your-file.mp4"   → HTML5 <video> player
@@ -13,12 +14,12 @@
 window.ADMUSE_CONTENT = {
   brand: "ADMUSE AI",
   brandShort: "Admuse AI",
-  tagline: "AI UGC & product ads for modern brands",
+  tagline: "AI creative agency for UGC & product ads",
 
   seo: {
-    title: "Admuse AI — AI UGC & Product Ads for Modern Brands",
+    title: "Admuse AI — AI Creative Agency for UGC & Product Ads",
     description:
-      "Create scroll-stopping UGC videos, product ads, and social creatives with Admuse AI — premium AI-powered production without expensive photoshoots."
+      "Admuse AI is an AI creative agency making scroll-stopping UGC videos, product ads, and social creatives — without expensive photoshoots or invented performance claims."
   },
 
   nav: [
@@ -39,16 +40,16 @@ window.ADMUSE_CONTENT = {
   },
 
   hero: {
-    badge: "Admuse · AI UGC studio",
-    eyebrow: "Admuse · AI UGC studio",
-    headline: "AI-Powered UGC Ads That Sell.",
+    badge: "AI creative agency",
+    eyebrow: "AI creative agency",
+    headline: "AI ads that feel native to the feed.",
     subhead:
-      "Scroll-stopping UGC, product ads, and social creatives — premium AI production without the photoshoot overhead.",
+      "Admuse AI (Admusebyruby) is an AI creative agency for brands that need UGC-style videos, product spots, and social creatives — fast, on-brand, and honest. No fake metrics. Just scroll-ready work.",
     ctaPrimary: {
       label: "Start a Project",
       href: "mailto:auto.mate0313@gmail.com"
     },
-    ctaSecondary: { label: "View Work", href: "#work" },
+    ctaSecondary: { label: "Sample Work", href: "#work" },
     frameLabel: "UGC · 9:16",
     frameHint: "Your next ad lives here",
     popImage: "images/hero-pop.png"
@@ -59,20 +60,20 @@ window.ADMUSE_CONTENT = {
     "Product Ads",
     "Product Photography",
     "Social Creatives",
-    "Video Ads"
+    "Vertical Video"
   ],
 
   services: {
     eyebrow: "Services",
-    title: "What We Create",
+    title: "What the agency builds",
     intro:
-      "Four core lanes — mix and match for launch packs, always-on social, or a single hero concept.",
+      "Four creative lanes from one AI-led studio — launch packs, always-on social, or a single hero concept.",
     items: [
       {
         id: "ai-ugc",
         title: "AI UGC",
         description:
-          "Native-feeling creator-style videos tuned for TikTok, Reels, and Shorts — authentic pacing, product-first framing.",
+          "Creator-style videos tuned for TikTok, Reels, and Shorts — authentic pacing, product-first framing, feed-native feel.",
         icon: "ugc"
       },
       {
@@ -100,10 +101,10 @@ window.ADMUSE_CONTENT = {
   },
 
   work: {
-    eyebrow: "Featured work",
-    title: "Built for the Feed.",
+    eyebrow: "Campaign samples",
+    title: "Work for the scroll.",
     intro:
-      "Real production samples — honest titles, real files. No invented metrics or brand logos."
+      "Real vertical samples from the agency — honest titles, real files. No invented views, CTR, or ROAS."
   },
 
   projects: [
@@ -117,19 +118,19 @@ window.ADMUSE_CONTENT = {
       video: "videos/video-one.mp4.mp4?v=2",
       poster: null,
       externalUrl: null,
-      tags: ["Vertical", "Product"]
+      tags: ["Vertical", "Product", "Motion"]
     },
     {
       id: "video-two",
       title: "Menu pop concept",
       description:
-        "Menu items that bloom into frame with warm light and appetite-forward pacing.",
-      aspect: "1 / 1",
+        "Menu items that bloom into frame with warm light and appetite-forward pacing — shown in a vertical sample frame.",
+      aspect: "9 / 16",
       mediaLabel: "Sample coming soon",
       video: "videos/video-two.mp4.mp4",
       poster: null,
       externalUrl: null,
-      tags: ["Food", "Square"]
+      tags: ["Food", "Vertical", "Concept"]
     },
     {
       id: "floating-drink",
@@ -141,29 +142,29 @@ window.ADMUSE_CONTENT = {
       video: "videos/video-three.mp4.mp4",
       poster: null,
       externalUrl: null,
-      tags: ["Vertical", "Lifestyle"]
+      tags: ["Lifestyle", "Vertical", "Beverage"]
     }
   ],
 
   process: {
-    eyebrow: "How it works",
-    title: "From Product to Ad",
-    intro: "A clear path from what you sell to what the feed sees.",
+    eyebrow: "Pipeline",
+    title: "Four steps. Clear handoffs.",
+    intro: "A simple agency pipeline from brief to platform-ready exports.",
     steps: [
       {
         num: "01",
         title: "Brief",
-        body: "Share your product, brand refs, offer, and platforms. Email or Instagram works."
+        body: "Share product, brand refs, offer, and platforms. Email or Instagram DM is enough to start."
       },
       {
         num: "02",
         title: "Direction",
-        body: "We lock creative angles, formats, and UGC styles that fit your category — no wasted shoots."
+        body: "We lock creative angles, formats, and UGC styles that fit your category — before anything is produced."
       },
       {
         num: "03",
         title: "Produce",
-        body: "AI-assisted production under human creative direction — generate, refine, and polish."
+        body: "AI-assisted production under human creative direction — generate, refine, and polish until it feels right."
       },
       {
         num: "04",
@@ -193,7 +194,7 @@ window.ADMUSE_CONTENT = {
         label: "Admuse",
         highlight: true,
         items: [
-          "Remote, creative-led workflow",
+          "Remote, creative-led agency workflow",
           "Faster concept-to-delivery cycles",
           "More variations per budget",
           "Built for rapid creative testing",
@@ -207,6 +208,10 @@ window.ADMUSE_CONTENT = {
     eyebrow: "FAQ",
     title: "Frequently asked questions",
     items: [
+      {
+        q: "What is Admuse AI?",
+        a: "Admuse AI (Admusebyruby) is an AI creative agency. We make UGC-style video, product ads, and social creatives with modern AI tools under human creative direction — built to feel native on social."
+      },
       {
         q: "What is AI UGC?",
         a: "AI UGC is creator-style video and imagery produced with modern AI tools under human creative direction — built to feel native on social, not like a traditional TV spot."
@@ -229,16 +234,16 @@ window.ADMUSE_CONTENT = {
       },
       {
         q: "Do you guarantee sales or virality?",
-        a: "No. We deliver strong, scroll-ready creatives designed for testing — performance depends on offer, audience, media, and many factors outside the asset alone."
+        a: "No. We deliver strong, scroll-ready creatives designed for testing — performance depends on offer, audience, media, and many factors outside the asset alone. We never invent ROAS, views, or CTR."
       }
     ]
   },
 
   finalCta: {
-    eyebrow: "Next step",
-    title: "Ready when your product is.",
+    eyebrow: "Work with the agency",
+    title: "Ready to brief your next creative?",
     body:
-      "Tell us what you’re launching. Reach us on Instagram @admusebyruby or email — we’ll reply with a clear next step.",
+      "Tell us what you’re launching. Reach Admuse on Instagram @admusebyruby or email — we’ll reply with a clear next step. No packages page, no fake quotes — just a real conversation.",
     ctaPrimary: {
       label: "Email Us",
       href: "mailto:auto.mate0313@gmail.com"
@@ -261,7 +266,7 @@ window.ADMUSE_CONTENT = {
   },
 
   footer: {
-    note: "© 2026 Admuse AI · Soft ruby creative",
+    note: "© 2026 Admuse AI · AI creative agency · Soft ruby",
     links: [
       { label: "Work", href: "#work" },
       { label: "Services", href: "#services" },

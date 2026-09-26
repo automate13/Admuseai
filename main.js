@@ -121,16 +121,9 @@
     var wrap = document.querySelector('[data-bind="valueStrip"]');
     if (!wrap || !content.valueStrip) return;
     clear(wrap);
-    content.valueStrip.forEach(function (label, i) {
-      if (i > 0) {
-        var sep = document.createElement("span");
-        sep.className = "value-sep";
-        sep.setAttribute("aria-hidden", "true");
-        sep.textContent = "·";
-        wrap.appendChild(sep);
-      }
+    content.valueStrip.forEach(function (label) {
       var span = document.createElement("span");
-      span.className = "value-item";
+      span.className = "value-chip";
       span.textContent = label;
       wrap.appendChild(span);
     });
@@ -259,12 +252,13 @@
 
     content.projects.forEach(function (project) {
       var card = document.createElement("article");
-      card.className = "project-card";
+      card.className = "project-card project-card--sample";
       card.setAttribute("role", "listitem");
 
       var media = document.createElement("div");
       media.className = "project-media";
-      media.style.aspectRatio = project.aspect || "4 / 5";
+      /* Uniform vertical social frame (Manus-like grid alignment) */
+      media.style.aspectRatio = "9 / 16";
 
       if (project.video) {
         media.classList.add("has-video");
